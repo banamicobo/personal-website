@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miko J. Banas — Flow Efficiency Consultant</title>
+
+    <meta name="description" content="Lean & Flow consultant for white collar organizations. Helping companies shift from resource efficiency to flow efficiency.">
+    <meta name="author" content="Mikołaj Jerzy Banaś">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23FFFFFF'>M</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --off-black: #0a0a0a;
+            --rich-black: #050505;
+            --gold: #FFFFFF;
+            --gold-light: #E8E8E8;
+            --gold-dark: #CCCCCC;
+            --gold-shimmer: #FFFFFF;
+            --white: #FFFFFF;
+            --off-white: #F8F8F8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        /* Language switching */
+        [data-lang="en"] .pl { display: none; }
+        [data-lang="pl"] .en { display: none; }
+
+        .lang-btn {
+            background: transparent;
+            color: rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 2px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn.active {
+            color: #fff;
+            border-color: rgba(255,255,255,0.8);
+        }
+        .lang-btn:hover { color: #fff; border-color: rgba(255,255,255,0.6); }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.15); }
+            50% { opacity: 0.85; text-shadow: 0 0 30px rgba(255,255,255,0.25); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.2); }
+            50% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+        }
+
+        .animate-fadeInUp { animation: fadeInUp 1.2s ease-out forwards; }
+        .animate-shimmer { animation: shimmer 4s ease-in-out infinite; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-pulse-border { animation: pulse-border 3s ease-in-out infinite; }
+
+        /* Text */
+        .white-text { color: var(--white); }
+        .white-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 50%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--white);
+            color: var(--black);
+            padding: 16px 36px;
+            border-radius: 2px;
+            font-weight: 500;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255,255,255,0.15);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            padding: 16px 36px;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 2px;
+            font-weight: 400;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--black);
+            box-shadow: 0 8px 30px rgba(255,255,255,0.12);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--rich-black);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 4px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,255,255,0.35);
+            box-shadow: 0 20px 60px rgba(255,255,255,0.06);
+        }
+
+        /* Nav */
+        .nav-wrap {
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Section divider */
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 20px;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            border-left: 2px solid rgba(255,255,255,0.6);
+            padding: 20px 28px;
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--rich-black); }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+
+        @media (max-width: 768px) {
+            .card { padding: 24px; }
+            .btn-primary, .btn-outline { padding: 12px 24px; font-size: 12px; }
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rich-black': '#050505',
+                        'off-black': '#0a0a0a',
+                    },
+                    fontFamily: { 'serif': ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-8 py-5">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-serif animate-shimmer tracking-widest">MB</div>
+                <div class="hidden md:flex gap-8 items-center">
+                    <a href="#about" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">About</span><span class="pl">O mnie</span>
+                    </a>
+                    <a href="#approach" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Approach</span><span class="pl">Podejście</span>
+                    </a>
+                    <a href="#services" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Services</span><span class="pl">Usługi</span>
+                    </a>
+                    <a href="#work" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Work</span><span class="pl">Realizacje</span>
+                    </a>
+                    <a href="#team" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Team</span><span class="pl">Zespół</span>
+                    </a>
+                    <a href="#contact" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Contact</span><span class="pl">Kontakt</span>
+                    </a>
+                    <div class="flex gap-2 ml-4">
+                        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+                        <button class="lang-btn" id="btn-pl" onclick="setLang('pl')">PL</button>
+                    </div>
+                </div>
+                <!-- Mobile lang switcher -->
+                <div class="flex md:hidden gap-2">
+                    <button class="lang-btn active" id="btn-en-m" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-pl-m" onclick="setLang('pl')">PL</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-16 w-48 h-48 bg-white/3 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-32 right-20 w-64 h-64 bg-white/2 rounded-full blur-3xl animate-float" style="animation-delay:3s"></div>
+        </div>
+
+        <div class="relative z-10 text-center max-w-5xl mx-auto px-8 pt-24">
+            <div class="section-label animate-fadeInUp">Lean & Flow Consulting</div>
+
+            <h1 class="font-serif text-5xl md:text-7xl font-black mb-8 leading-tight animate-fadeInUp" style="animation-delay:0.1s">
+                <span class="en white-gradient">
+                    Your organization<br>is resource efficient.<br>
+                    <span style="-webkit-text-fill-color: rgba(255,255,255,0.5)">But is it</span> flow efficient?
+                </span>
+                <span class="pl white-gradient">
+                    Twoja organizacja<br>jest resource efficient.<br>
+                    <span style="-webkit-text-fill-color: rgba(255,255,255,0.5)">Ale czy jest</span> flow efficiency?
+                </span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-white/60 mb-14 max-w-2xl mx-auto animate-fadeInUp font-light leading-relaxed" style="animation-delay:0.3s">
+                <span class="en">I help white collar organizations eliminate silos, reduce friction and shift from managing resources to managing flow.</span>
+                <span class="pl">Pomagam organizacjom white collar eliminować silosy, redukować tarcia i przejść od zarządzania zasobami do zarządzania przepływem.</span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp" style="animation-delay:0.5s">
+                <a href="#contact" class="btn-primary">
+                    <span class="en">Let's Talk</span><span class="pl">Porozmawiajmy</span>
+                </a>
+                <a href="#approach" class="btn-outline">
+                    <span class="en">My Approach</span><span class="pl">Moje Podejście</span>
+                </a>
+            </div>
+
+            <div class="mt-20 flex justify-center gap-16 animate-fadeInUp" style="animation-delay:0.7s">
+                <div class="text-center">
+                    <div class="text-3xl font-serif font-bold">8+</div>
+                    <div class="text-xs text-white/40 tracking-widest uppercase mt-1">
+                        <span class="en">Years</span><span class="pl">Lat</span>
+                    </div>
+                </div>
+                <div class="w-px bg-white/10"></div>
+                <div class="text-center">
+                    <div class="text-3xl font-serif font-bold">5</div>
+                    <div class="text-xs text-white/40 tracking-widest uppercase mt-1">
+                        <span class="en">Global Orgs</span><span class="pl">Globalnych Org.</span>
+                    </div>
+                </div>
+                <div class="w-px bg-white/10"></div>
+                <div class="text-center">
+                    <div class="text-3xl font-serif font-bold">7</div>
+                    <div class="text-xs text-white/40 tracking-widest uppercase mt-1">
+                        <span class="en">Programs</span><span class="pl">Programów</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-32 px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <div class="section-label">
+                        <span class="en">About</span><span class="pl">O mnie</span>
+                    </div>
+                    <h2 class="font-serif text-4xl font-bold mb-8">
+                        <span class="en">Miko J. Banas</span>
+                        <span class="pl">Mikołaj Jerzy Banaś</span>
+                    </h2>
+                    <div class="space-y-5 text-white/70 leading-relaxed">
+                        <p>
+                            <span class="en">For 8 years I have been running Kaizen events and operational sprints inside some of Europe's largest organizations — Philips, Signify, Electrolux, Sonova and Sennheiser.</span>
+                            <span class="pl">Od 8 lat prowadzę Kaizen eventy i sprinty operacyjne w największych europejskich organizacjach — Philips, Signify, Electrolux, Sonova i Sennheiser.</span>
+                        </p>
+                        <p>
+                            <span class="en">My focus is on white collar environments — offices, planning functions, cross-functional teams — where Lean and Continuous Improvement remain largely unexplored territory, despite being where the biggest inefficiencies actually hide.</span>
+                            <span class="pl">Specjalizuję się w środowiskach white collar — biurach, funkcjach planowania, zespołach cross-funkcyjnych — gdzie Lean i Continuous Improvement pozostają w dużej mierze nieodkrytym terenem, mimo że to właśnie tam kryją się największe nieefektywności.</span>
+                        </p>
+                        <p>
+                            <span class="en">My approach is built on a simple truth: process improvements only stick when the people executing them believe in them. That's why I put change management and the human factor at the centre of every engagement.</span>
+                            <span class="pl">Moje podejście opiera się na prostej prawdzie: zmiany procesowe działają tylko wtedy, gdy wierzą w nie ludzie, którzy je wdrażają. Dlatego change management i czynnik ludzki stawiam w centrum każdego projektu.</span>
+                        </p>
+                    </div>
+                    <div class="mt-10 flex gap-4">
+                        <a href="#contact" class="btn-primary">
+                            <span class="en">Get in Touch</span><span class="pl">Napisz do mnie</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="highlight-box">
+                        <div class="text-xs tracking-widest uppercase text-white/40 mb-2">
+                            <span class="en">Worked with</span><span class="pl">Doświadczenie</span>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Philips</span>
+                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Signify</span>
+                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Electrolux</span>
+                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Sonova</span>
+                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Sennheiser</span>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="text-xs tracking-widest uppercase text-white/40 mb-2">
+                            <span class="en">Focus area</span><span class="pl">Specjalizacja</span>
+                        </div>
+                        <p class="text-white/70 text-sm">
+                            <span class="en">White collar Lean — planning, cross-functional flow, office operations</span>
+                            <span class="pl">White collar Lean — planowanie, przepływ cross-funkcyjny, operacje biurowe</span>
+                        </p>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="text-xs tracking-widest uppercase text-white/40 mb-2">
+                            <span class="en">Method</span><span class="pl">Metoda</span>
+                        </div>
+                        <p class="text-white/70 text-sm">
+                            <span class="en">Human-centric change management — teams find and own their own solutions</span>
+                            <span class="pl">Human-centric change management — zespoły same znajdują i są właścicielami rozwiązań</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach -->
+    <section id="approach" class="py-32 px-8 bg-rich-black">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">The Problem</span><span class="pl">Problem</span>
+            </div>
+            <h2 class="font-serif text-4xl font-bold text-center mb-6">
+                <span class="en">Resource efficient. Not flow efficient.</span>
+                <span class="pl">Resource efficient. Nie flow efficient.</span>
+            </h2>
+            <p class="text-white/50 text-center max-w-2xl mx-auto mb-20 leading-relaxed">
+                <span class="en">Lean and flow thinking are well established in manufacturing and logistics. In white collar environments — where the product is information — this remains largely undiscovered.</span>
+                <span class="pl">Lean i myślenie przepływowe są dobrze ugruntowane w produkcji i logistyce. W środowiskach white collar — gdzie produktem jest informacja — to wciąż relatywnie nieodkryty teren.</span>
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <div class="card text-center">
+                    <div class="text-3xl font-serif font-bold mb-3 text-white/30">01</div>
+                    <h3 class="font-semibold mb-3 text-sm tracking-wide uppercase">
+                        <span class="en">Silo Setup</span><span class="pl">Silosy</span>
+                    </h3>
+                    <p class="text-white/50 text-sm leading-relaxed">
+                        <span class="en">Departments optimise locally. Incentives are set at function level. Cross-functional flow is nobody's job.</span>
+                        <span class="pl">Departamenty optymalizują lokalnie. Incentives ustawione na poziomie funkcji. Przepływ cross-funkcyjny nie należy do nikogo.</span>
+                    </p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-3xl font-serif font-bold mb-3 text-white/30">02</div>
+                    <h3 class="font-semibold mb-3 text-sm tracking-wide uppercase">
+                        <span class="en">100%+ Utilisation</span><span class="pl">Ponad 100% utilizacji</span>
+                    </h3>
+                    <p class="text-white/50 text-sm leading-relaxed">
+                        <span class="en">Everyone is busy. Resources are fully loaded. Yet delivery is slow, quality suffers and priorities constantly shift.</span>
+                        <span class="pl">Wszyscy są zajęci. Zasoby w pełni obciążone. A mimo to dostarczanie jest wolne, jakość cierpi, a priorytety ciągle się zmieniają.</span>
+                    </p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-3xl font-serif font-bold mb-3 text-white/30">03</div>
+                    <h3 class="font-semibold mb-3 text-sm tracking-wide uppercase">
+                        <span class="en">Flow Suffers</span><span class="pl">Flow cierpi</span>
+                    </h3>
+                    <p class="text-white/50 text-sm leading-relaxed">
+                        <span class="en">Work sits waiting. Handovers create friction. The organisation is resource efficient but not flow efficient.</span>
+                        <span class="pl">Praca czeka w kolejkach. Przekazania generują tarcia. Organizacja jest resource efficient, ale nie flow efficient.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="highlight-box max-w-3xl mx-auto text-center">
+                <p class="text-lg font-light leading-relaxed">
+                    <span class="en">"I work with teams until they understand the system, identify the waste themselves and — crucially — believe in the solution enough to sustain it."</span>
+                    <span class="pl">"Pracuję z zespołami dopóki nie zrozumieją systemu, same nie zidentyfikują marnotrawstwa i — co kluczowe — nie uwierzą w rozwiązanie na tyle, żeby je utrzymać."</span>
+                </p>
+                <div class="text-xs text-white/30 tracking-widest uppercase mt-4"><span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-32 px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Services</span><span class="pl">Usługi</span>
+            </div>
+            <h2 class="font-serif text-4xl font-bold text-center mb-6">
+                <span class="en">What I offer</span><span class="pl">Co oferuję</span>
+            </h2>
+            <p class="text-white/50 text-center max-w-xl mx-auto mb-16 text-sm leading-relaxed">
+                <span class="en">One standardised entry point. Six programs tailored to your organisation's specific challenges.</span>
+                <span class="pl">Jeden standardowy punkt wejścia. Sześć programów dopasowanych do specyficznych wyzwań Twojej organizacji.</span>
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                        <span class="en">Standard</span><span class="pl">Standardowy</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Lean Basic</h3>
+                    <p class="text-white/55 text-sm leading-relaxed">
+                        <span class="en">A structured introduction to Lean thinking for teams with no prior exposure. A solid foundation before any deeper program.</span>
+                        <span class="pl">Ustrukturyzowane wprowadzenie do myślenia Lean dla zespołów bez wcześniejszego doświadczenia. Solidna podstawa przed każdym głębszym programem.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Lean Advanced</h3>
+                    <p class="text-white/55 text-sm leading-relaxed">
+                        <span class="en">Advanced Lean tools and flow thinking adapted to your organisation's structure, language and current challenges.</span>
+                        <span class="pl">Zaawansowane narzędzia Lean i myślenie przepływowe dopasowane do struktury, języka i aktualnych wyzwań Twojej organizacji.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Workshop Facilitation</span><span class="pl">Fasylitacja Warsztatów</span>
+                    </h3>
+                    <p class="text-white/55 text-sm leading-relaxed">
+                        <span class="en">Full-cycle facilitation — preparation, running the session, and structured followup to ensure changes land.</span>
+                        <span class="pl">Fasylitacja pełnego cyklu — przygotowanie, prowadzenie sesji i strukturyzowany followup, żeby zmiany rzeczywiście wylądowały.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Kaizen Leadership Training</span><span class="pl">Szkolenie: Prowadzenie Kaizenów</span>
+                    </h3>
+                    <p class="text-white/55 text-sm leading-relaxed">
+                        <span class="en">Train your internal leaders to run Kaizen events independently. Build capability that stays in the organisation.</span>
+                        <span class="pl">Przeszkól wewnętrznych liderów do samodzielnego prowadzenia Kaizen eventów. Zbuduj kompetencje, które zostają w organizacji.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Problem Solving</span><span class="pl">Szkolenie: Problem Solving</span>
+                    </h3>
+                    <p class="text-white/55 text-sm leading-relaxed">
+                        <span class="en">Structured problem-solving methods for white collar teams. Move beyond firefighting to root cause elimination.</span>
+                        <span class="pl">Ustrukturyzowane metody rozwiązywania problemów dla zespołów white collar. Odejście od gaszenia pożarów w kierunku eliminacji przyczyn źródłowych.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Daily Management</span><span class="pl">Szkolenie: Daily Management</span>
+                    </h3>
+                    <p class="text-white/55 text-sm leading-relaxed">
+                        <span class="en">Daily Management systems built specifically for white collar environments — where the product is information, not a physical unit.</span>
+                        <span class="pl">Systemy Daily Management zbudowane specjalnie dla środowisk white collar — gdzie produktem jest informacja, a nie fizyczna jednostka.</span>
+                    </p>
+                </div>
+
+                <div class="card md:col-span-2 lg:col-span-3 lg:max-w-sm lg:mx-auto">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Workshop Leadership Training</span><span class="pl">Szkolenie: Prowadzenie Workshopów</span>
+                    </h3>
+                    <p class="text-white/55 text-sm leading-relaxed">
+                        <span class="en">Equip your people to design and facilitate improvement workshops. Sustainable change from the inside.</span>
+                        <span class="pl">Wyposaż swoich ludzi w umiejętność projektowania i prowadzenia warsztatów usprawnieniowych. Trwała zmiana od wewnątrz.</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Work / Realizations -->
+    <section id="work" class="py-32 px-8 bg-rich-black">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Work</span><span class="pl">Realizacje</span>
+            </div>
+            <h2 class="font-serif text-4xl font-bold text-center mb-6">
+                <span class="en">Selected engagements</span><span class="pl">Wybrane projekty</span>
+            </h2>
+            <p class="text-white/50 text-center max-w-xl mx-auto mb-16 text-sm">
+                <span class="en">Real implementations inside global organisations.</span>
+                <span class="pl">Realne wdrożenia wewnątrz globalnych organizacji.</span>
+            </p>
+
+            <div class="space-y-4">
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6">
+                    <div class="md:w-36 shrink-0">
+                        <div class="text-white font-semibold tracking-wide">Philips</div>
+                        <div class="text-xs text-white/30 mt-1">Global</div>
+                    </div>
+                    <div>
+                        <h3 class="font-medium mb-2">
+                            <span class="en">Daily Management System — 3-level implementation</span>
+                            <span class="pl">System Daily Management — wdrożenie na 3 poziomach</span>
+                        </h3>
+                        <p class="text-white/50 text-sm leading-relaxed">
+                            <span class="en">Design and implementation of a complete Daily Management system spanning three levels of the organisation — from shop floor to senior leadership.</span>
+                            <span class="pl">Zaprojektowanie i wdrożenie kompletnego systemu Daily Management obejmującego trzy poziomy organizacji — od poziomu operacyjnego do wyższej kadry zarządzającej.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6">
+                    <div class="md:w-36 shrink-0">
+                        <div class="text-white font-semibold tracking-wide">Electrolux</div>
+                        <div class="text-xs text-white/30 mt-1">CEE Region</div>
+                    </div>
+                    <div>
+                        <h3 class="font-medium mb-2">
+                            <span class="en">Daily Management programme + Demand Planning Accuracy (DPA)</span>
+                            <span class="pl">Program Daily Management + poprawa DPA (Demand Planning Accuracy)</span>
+                        </h3>
+                        <p class="text-white/50 text-sm leading-relaxed">
+                            <span class="en">Full Daily Management programme rollout combined with targeted work on demand planning accuracy across the CEE market — directly with the sales organisations responsible for forecasting.</span>
+                            <span class="pl">Pełne wdrożenie programu Daily Management połączone z dedykowaną pracą nad dokładnością planowania popytu na rynku CEE — bezpośrednio z organizacjami sprzedażowymi odpowiedzialnymi za prognozowanie.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6">
+                    <div class="md:w-36 shrink-0">
+                        <div class="text-white font-semibold tracking-wide">Sennheiser</div>
+                        <div class="text-xs text-white/30 mt-1">Global</div>
+                    </div>
+                    <div>
+                        <h3 class="font-medium mb-2">
+                            <span class="en">SIOP & S&OP implementation — global scope</span>
+                            <span class="pl">Implementacja SIOP i S&OP — zasięg globalny</span>
+                        </h3>
+                        <p class="text-white/50 text-sm leading-relaxed">
+                            <span class="en">Implementation of SIOP and S&OP processes at global level, working directly with international sales organisations responsible for planning and demand management.</span>
+                            <span class="pl">Implementacja procesów SIOP i S&OP na poziomie globalnym, praca bezpośrednio z międzynarodowymi organizacjami sprzedażowymi odpowiedzialnymi za planowanie i zarządzanie popytem.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6 opacity-60">
+                    <div class="md:w-36 shrink-0">
+                        <div class="text-white font-semibold tracking-wide">Signify</div>
+                        <div class="text-xs text-white/30 mt-1">—</div>
+                    </div>
+                    <div>
+                        <p class="text-white/40 text-sm italic">
+                            <span class="en">Details coming soon.</span>
+                            <span class="pl">Szczegóły wkrótce.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6 opacity-60">
+                    <div class="md:w-36 shrink-0">
+                        <div class="text-white font-semibold tracking-wide">Sonova</div>
+                        <div class="text-xs text-white/30 mt-1">—</div>
+                    </div>
+                    <div>
+                        <p class="text-white/40 text-sm italic">
+                            <span class="en">Details coming soon.</span>
+                            <span class="pl">Szczegóły wkrótce.</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Team / Ecosystem -->
+    <section id="team" class="py-32 px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Team</span><span class="pl">Zespół</span>
+            </div>
+            <h2 class="font-serif text-4xl font-bold text-center mb-6">
+                <span class="en">You're not hiring a freelancer</span>
+                <span class="pl">Nie zatrudniasz freelancera</span>
+            </h2>
+            <p class="text-white/50 text-center max-w-2xl mx-auto mb-16 leading-relaxed text-sm">
+                <span class="en">Behind every engagement is a network of practitioners who are still actively working inside global organisations — bringing you what works right now, not what worked ten years ago.</span>
+                <span class="pl">Za każdym projektem stoi sieć praktyków, którzy nadal aktywnie pracują wewnątrz globalnych organizacji — dostarczając Ci to, co działa teraz, nie to, co działało dziesięć lat temu.</span>
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                        <span class="en">Lead consultant</span><span class="pl">Lead consultant</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1"><span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span></h3>
+                    <p class="text-white/40 text-xs tracking-wide mb-4">
+                        <span class="en">White Collar Lean & Flow | Change Management</span>
+                        <span class="pl">White Collar Lean & Flow | Change Management</span>
+                    </p>
+                    <p class="text-white/55 text-sm leading-relaxed">
+                        <span class="en">8 years running Kaizen events and operational sprints in global organisations. Proprietary approach built on human-centric change management and deep awareness of silo-driven constraints.</span>
+                        <span class="pl">8 lat prowadzenia Kaizen eventów i sprintów operacyjnych w globalnych organizacjach. Autorskie podejście zbudowane na human-centric change management i głębokiej świadomości ograniczeń wynikających z silosów.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                        <span class="en">Technology partner</span><span class="pl">Partner technologiczny</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1">mikolajorsztynowicz.pl</h3>
+                    <p class="text-white/40 text-xs tracking-wide mb-4">Power BI | Dashboards | Reporting</p>
+                    <p class="text-white/55 text-sm leading-relaxed">
+                        <span class="en">Specialist in Power BI dashboards and operational reporting. Multiple live implementations across industries. Turns your data into a Daily Management tool.</span>
+                        <span class="pl">Specjalista od dashboardów Power BI i raportowania operacyjnego. Wiele wdrożeń produkcyjnych w różnych branżach. Zamienia Twoje dane w narzędzie Daily Management.</span>
+                    </p>
+                </div>
+
+                <div class="card md:col-span-2">
+                    <div class="text-xs tracking-widest uppercase text-white/30 mb-6">
+                        <span class="en">Expert network — active practitioners, not retired consultants</span>
+                        <span class="pl">Sieć ekspertów — aktywni praktycy, nie emerytowani konsultanci</span>
+                    </div>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div>
+                            <div class="text-sm font-medium mb-1">Lean Masters</div>
+                            <p class="text-white/40 text-xs leading-relaxed">
+                                <span class="en">Still active in global organisations. Access to what's being implemented today.</span>
+                                <span class="pl">Nadal aktywni w globalnych organizacjach. Dostęp do tego, co jest wdrażane dziś.</span>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium mb-1">Six Sigma Black Belts</div>
+                            <p class="text-white/40 text-xs leading-relaxed">
+                                <span class="en">Deep analytical capability for complex problem-solving engagements.</span>
+                                <span class="pl">Zaawansowane kompetencje analityczne do złożonych projektów problem-solving.</span>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium mb-1">EY & Alvarez and Marsal</div>
+                            <p class="text-white/40 text-xs leading-relaxed">
+                                <span class="en">Senior consulting experience for large-scale transformation programmes.</span>
+                                <span class="pl">Doświadczenie senior consulting przy dużych programach transformacyjnych.</span>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium mb-1">Growth Leaders</div>
+                            <p class="text-white/40 text-xs leading-relaxed">
+                                <span class="en">Scaling, e-commerce and growth operations expertise beyond traditional corporate.</span>
+                                <span class="pl">Ekspertyza w skalowaniu, e-commerce i operacjach wzrostu poza tradycyjną korporacją.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sad Truths -->
+    <section class="py-32 px-8 bg-rich-black">
+        <div class="max-w-4xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Sad but true</span><span class="pl">Smutne ale prawdziwe</span>
+            </div>
+            <h2 class="font-serif text-4xl font-bold text-center mb-4">
+                <span class="en">Corporate truths nobody puts on a slide</span>
+                <span class="pl">Prawdy o korpo, których nikt nie wrzuca na slajd</span>
+            </h2>
+            <p class="text-white/40 text-center text-sm mb-16">
+                <span class="en">If any of these sound familiar, we should talk.</span>
+                <span class="pl">Jeśli któraś z nich brzmi znajomo — porozmawiajmy.</span>
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+                <div class="card hover:border-white/30">
+                    <div class="text-3xl font-serif text-white/10 mb-4">"</div>
+                    <p class="text-white/80 leading-relaxed">
+                        <span class="en">Being right isn't enough in corporate. Someone with authority still has to agree you're right.</span>
+                        <span class="pl">W korporacji nie wystarczy mieć rację — rację ktoś jeszcze musi ci przyznać.</span>
+                    </p>
+                </div>
+
+                <div class="card hover:border-white/30">
+                    <div class="text-3xl font-serif text-white/10 mb-4">"</div>
+                    <p class="text-white/80 leading-relaxed">
+                        <span class="en">If it's not on a slide, it doesn't exist.</span>
+                        <span class="pl">Czego nie ma na slajdzie, to nie istnieje.</span>
+                    </p>
+                </div>
+
+                <div class="card hover:border-white/30">
+                    <div class="text-3xl font-serif text-white/10 mb-4">"</div>
+                    <p class="text-white/80 leading-relaxed">
+                        <span class="en">Before you do anything in corporate, think first about how you'll present it.</span>
+                        <span class="pl">W korpo zanim cokolwiek zrobisz, zastanów się najpierw jak to pokażesz.</span>
+                    </p>
+                </div>
+
+                <div class="card hover:border-white/30">
+                    <div class="text-3xl font-serif text-white/10 mb-4">"</div>
+                    <p class="text-white/80 leading-relaxed">
+                        <span class="en">Incentives drive behaviours.</span>
+                        <span class="pl">Incentives napędzają zachowania.</span>
+                    </p>
+                </div>
+
+                <div class="card hover:border-white/30">
+                    <div class="text-3xl font-serif text-white/10 mb-4">"</div>
+                    <p class="text-white/80 leading-relaxed">
+                        <span class="en">Nobody will give you as much as sales will promise you.</span>
+                        <span class="pl">Nikt ci tyle nie da ile sprzedaż ci obieca.</span>
+                    </p>
+                </div>
+
+                <div class="card hover:border-white/30">
+                    <div class="text-3xl font-serif text-white/10 mb-4">"</div>
+                    <p class="text-white/80 leading-relaxed">
+                        <span class="en">Let those who are paid accordingly make the decisions.</span>
+                        <span class="pl">Daj podejmować decyzje tym, którzy mają za to płacone odpowiednio.</span>
+                    </p>
+                </div>
+
+                <div class="card hover:border-white/30">
+                    <div class="text-3xl font-serif text-white/10 mb-4">"</div>
+                    <p class="text-white/80 leading-relaxed">
+                        <span class="en">Never fight corporate inertia — and never stand in the direction it's moving.</span>
+                        <span class="pl">Nigdy nie siłuj się z bezwładnością korporacji i nie stawaj na kierunku w którym się porusza.</span>
+                    </p>
+                </div>
+
+            </div>
+
+            <p class="text-center text-white/30 text-xs tracking-widest uppercase mt-12">
+                <span class="en">This is the system. We can change it.</span>
+                <span class="pl">To jest system. Możemy go zmienić.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-32 px-8 bg-rich-black">
+        <div class="max-w-4xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Contact</span><span class="pl">Kontakt</span>
+            </div>
+            <h2 class="font-serif text-4xl font-bold text-center mb-6">
+                <span class="en">Let's talk about your organisation</span>
+                <span class="pl">Porozmawiajmy o Twojej organizacji</span>
+            </h2>
+            <p class="text-white/50 text-center max-w-xl mx-auto mb-16 leading-relaxed text-sm">
+                <span class="en">Tell me where the friction is. I'll tell you honestly if I can help — and what that would look like.</span>
+                <span class="pl">Powiedz mi gdzie są tarcia. Powiem Ci szczerze czy mogę pomóc — i jak by to wyglądało.</span>
+            </p>
+
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center shrink-0">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs text-white/30 tracking-widest uppercase mb-1">Email</div>
+                            <a href="mailto:mikolajbanas@gmail.com" class="text-white/80 hover:text-white transition-colors text-sm">mikolajbanas@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center shrink-0">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs text-white/30 tracking-widest uppercase mb-1">LinkedIn</div>
+                            <a href="https://linkedin.com/in/mikolajbanas" target="_blank" class="text-white/80 hover:text-white transition-colors text-sm">linkedin.com/in/mikolajbanas</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="space-y-6" onsubmit="handleSubmit(event)">
+                    <div>
+                        <label class="block text-xs text-white/40 tracking-widest uppercase mb-2">
+                            <span class="en">Name</span><span class="pl">Imię i nazwisko</span>
+                        </label>
+                        <input type="text" required class="w-full bg-black border border-white/15 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-white/50 transition-colors placeholder:text-white/20"
+                            placeholder="Jan Kowalski">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-white/40 tracking-widest uppercase mb-2">Email</label>
+                        <input type="email" required class="w-full bg-black border border-white/15 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-white/50 transition-colors placeholder:text-white/20"
+                            placeholder="jan@firma.pl">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-white/40 tracking-widest uppercase mb-2">
+                            <span class="en">What's the challenge?</span><span class="pl">Jaki masz problem?</span>
+                        </label>
+                        <textarea rows="4" class="w-full bg-black border border-white/15 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-white/50 transition-colors placeholder:text-white/20 resize-none"
+                            placeholder="..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full" id="submit-btn">
+                        <span class="en">Send Message</span><span class="pl">Wyślij wiadomość</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/8">
+        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-serif text-xl animate-shimmer">MB</div>
+            <p class="text-white/30 text-xs tracking-wide text-center">
+                © 2026 <span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span>.
+                <span class="en">Flow efficiency for white collar organisations.</span>
+                <span class="pl">Flow efficiency dla organizacji white collar.</span>
+            </p>
+            <div class="flex gap-6">
+                <a href="mailto:mikolajbanas@gmail.com" class="text-white/30 hover:text-white/70 transition-colors text-xs tracking-widest uppercase">Email</a>
+                <a href="https://linkedin.com/in/mikolajbanas" target="_blank" class="text-white/30 hover:text-white/70 transition-colors text-xs tracking-widest uppercase">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.documentElement.setAttribute('data-lang', lang);
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('#btn-' + lang + ', #btn-' + lang + '-m').forEach(btn => btn.classList.add('active'));
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.textContent = '...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.textContent = '✓';
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="en">Send Message</span><span class="pl">Wyślij wiadomość</span>';
+                    btn.disabled = false;
+                    e.target.reset();
+                    const lang = document.documentElement.getAttribute('data-lang');
+                    if (lang === 'pl') setLang('pl');
+                }, 2000);
+            }, 1200);
+        }
+
+        // Scroll fade-in for cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(24px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
