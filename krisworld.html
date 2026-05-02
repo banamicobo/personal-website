@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miko J. Banas — Flow Efficiency Consultant</title>
+
+    <meta name="description" content="Lean & Flow consultant for white collar organizations. Helping companies shift from resource efficiency to flow efficiency.">
+    <meta name="author" content="Mikołaj Jerzy Banaś">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%233ABFB8'>M</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --navy-deep:   #06101e;
+            --navy:        #091525;
+            --navy-card:   #0d1e35;
+            --navy-lift:   #122440;
+            --amber:       #E8A030;
+            --amber-light: #F0B845;
+            --amber-dim:   rgba(232,160,48,0.18);
+            --teal:        #3ABFB8;
+            --teal-light:  #4ECFC8;
+            --teal-dim:    rgba(58,191,184,0.15);
+            --white:       #FFFFFF;
+            --off-white:   #EEF4FA;
+            --muted:       rgba(255,255,255,0.55);
+            --subtle:      rgba(255,255,255,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--navy-deep);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        /* Subtle star-field grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(58,191,184,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 90%, rgba(14,40,80,0.5) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        /* Language switching */
+        [data-lang="en"] .pl { display: none; }
+        [data-lang="pl"] .en { display: none; }
+
+        /* ── LANGUAGE BUTTONS ── */
+        .lang-btn {
+            background: transparent;
+            color: rgba(255,255,255,0.35);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 4px 12px;
+            border-radius: 2px;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn.active {
+            color: var(--teal);
+            border-color: var(--teal);
+        }
+        .lang-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(36px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmerTeal {
+            0%,100% { opacity:1; text-shadow: 0 0 24px rgba(58,191,184,0.2); }
+            50%      { opacity:0.8; text-shadow: 0 0 36px rgba(58,191,184,0.35); }
+        }
+        @keyframes floatSlow {
+            0%,100% { transform: translateY(0px); }
+            50%      { transform: translateY(-18px); }
+        }
+        @keyframes pulseAmber {
+            0%,100% { box-shadow: 0 0 0 0 rgba(232,160,48,0.25); }
+            50%      { box-shadow: 0 0 0 10px rgba(232,160,48,0); }
+        }
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+
+        .animate-fadeInUp   { animation: fadeInUp 1.1s ease-out forwards; }
+        .animate-shimmer    { animation: shimmerTeal 4s ease-in-out infinite; }
+        .animate-float      { animation: floatSlow 7s ease-in-out infinite; }
+        .animate-pulse-amber{ animation: pulseAmber 3s ease-in-out infinite; }
+
+        /* ── TEXT UTILITIES ── */
+        .amber-text  { color: var(--amber); }
+        .teal-text   { color: var(--teal); }
+
+        .heading-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #C8E0F4 55%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-primary {
+            background: var(--amber);
+            color: #07101e;
+            padding: 15px 36px;
+            border-radius: 2px;
+            font-weight: 600;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background: var(--amber-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(232,160,48,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--teal);
+            padding: 15px 36px;
+            border: 1px solid var(--teal);
+            border-radius: 2px;
+            font-weight: 400;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: var(--teal-dim);
+            color: var(--white);
+            border-color: var(--teal-light);
+            box-shadow: 0 8px 28px rgba(58,191,184,0.15);
+        }
+
+        /* ── CARDS ── */
+        .card {
+            background: rgba(13,30,53,0.75);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 3px;
+            padding: 36px;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            backdrop-filter: blur(6px);
+            position: relative;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 3px;
+            background: linear-gradient(135deg, rgba(58,191,184,0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(58,191,184,0.25);
+            box-shadow: 0 20px 56px rgba(0,0,0,0.4), 0 0 0 1px rgba(58,191,184,0.1);
+        }
+
+        /* ── NAV ── */
+        .nav-wrap {
+            background: rgba(6,16,30,0.96);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(58,191,184,0.15);
+        }
+
+        /* ── SECTION LABEL ── */
+        .section-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* ── FLIGHT DIVIDER ── */
+        .flight-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: rgba(255,255,255,0.12);
+            margin: 40px 0;
+        }
+        .flight-divider::before,
+        .flight-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(58,191,184,0.25), transparent);
+        }
+        .flight-divider span {
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+
+        /* ── HIGHLIGHT BOX ── */
+        .highlight-box {
+            border-left: 2px solid var(--teal);
+            padding: 20px 28px;
+            background: rgba(58,191,184,0.04);
+        }
+
+        /* ── VERTICAL SEPARATOR (KrisWorld style) ── */
+        .v-sep {
+            width: 1px;
+            background: rgba(255,255,255,0.12);
+            align-self: stretch;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--navy-deep); }
+        ::-webkit-scrollbar-thumb { background: rgba(58,191,184,0.3); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(58,191,184,0.5); }
+
+        /* ── BOKEH ORBS ── */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        /* ── STAT DISPLAY (flight-data style) ── */
+        .stat-block .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--amber);
+            line-height: 1;
+        }
+        .stat-block .stat-label {
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-top: 6px;
+        }
+
+        /* ── COMPANY TAG ── */
+        .company-tag {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(58,191,184,0.2);
+            padding: 4px 12px;
+            border-radius: 1px;
+            background: rgba(58,191,184,0.05);
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .card { padding: 22px; }
+            .btn-primary, .btn-outline { padding: 12px 22px; font-size: 11px; }
+            .stat-block .stat-number { font-size: 1.75rem; }
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy-deep': '#06101e',
+                        'navy':      '#091525',
+                        'navy-card': '#0d1e35',
+                        'amber':     '#E8A030',
+                        'teal':      '#3ABFB8',
+                    },
+                    fontFamily: { 'serif': ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- ── NAVIGATION ── -->
+    <nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-8 py-5">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-serif animate-shimmer tracking-widest" style="color:var(--teal)">MB</div>
+                <div class="hidden md:flex gap-8 items-center">
+                    <a href="#about"    class="text-white/50 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase hover:text-teal-300">
+                        <span class="en">About</span><span class="pl">O mnie</span>
+                    </a>
+                    <a href="#approach" class="text-white/50 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Approach</span><span class="pl">Podejście</span>
+                    </a>
+                    <a href="#services" class="text-white/50 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Services</span><span class="pl">Usługi</span>
+                    </a>
+                    <a href="#work"     class="text-white/50 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Work</span><span class="pl">Realizacje</span>
+                    </a>
+                    <a href="#team"     class="text-white/50 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Team</span><span class="pl">Zespół</span>
+                    </a>
+                    <a href="#contact"  class="text-white/50 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
+                        <span class="en">Contact</span><span class="pl">Kontakt</span>
+                    </a>
+                    <div class="flex gap-2 ml-4">
+                        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+                        <button class="lang-btn"        id="btn-pl" onclick="setLang('pl')">PL</button>
+                    </div>
+                </div>
+                <div class="flex md:hidden gap-2">
+                    <button class="lang-btn active" id="btn-en-m" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn"        id="btn-pl-m" onclick="setLang('pl')">PL</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+
+        <!-- Bokeh orbs -->
+        <div class="orb w-96 h-96 top-16 -left-24"
+             style="background:radial-gradient(circle, rgba(58,191,184,0.08) 0%, transparent 70%);"></div>
+        <div class="orb w-80 h-80 bottom-24 right-0"
+             style="background:radial-gradient(circle, rgba(14,50,100,0.5) 0%, transparent 70%); animation: floatSlow 9s ease-in-out infinite; animation-delay:3s;"></div>
+        <div class="orb w-64 h-64 top-1/3 right-1/4"
+             style="background:radial-gradient(circle, rgba(232,160,48,0.04) 0%, transparent 70%); animation: floatSlow 11s ease-in-out infinite; animation-delay:6s;"></div>
+
+        <div class="relative z-10 text-center max-w-5xl mx-auto px-8 pt-24">
+
+            <!-- KrisWorld-style route label -->
+            <div class="section-label animate-fadeInUp">Lean &amp; Flow Consulting</div>
+
+            <h1 class="font-serif text-5xl md:text-7xl font-black mb-8 leading-tight animate-fadeInUp"
+                style="animation-delay:0.1s; font-weight:300; letter-spacing:-0.5px;">
+                <span class="en heading-gradient">
+                    Your organization<br>is resource efficient.<br>
+                    <span style="color:rgba(255,255,255,0.4); -webkit-text-fill-color:rgba(200,224,244,0.4);">But is it</span>
+                    <span style="color:var(--amber); -webkit-text-fill-color:var(--amber);"> flow efficient?</span>
+                </span>
+                <span class="pl heading-gradient">
+                    Twoja organizacja<br>jest resource efficient.<br>
+                    <span style="color:rgba(255,255,255,0.4); -webkit-text-fill-color:rgba(200,224,244,0.4);">Ale czy jest</span>
+                    <span style="color:var(--amber); -webkit-text-fill-color:var(--amber);"> flow efficient?</span>
+                </span>
+            </h1>
+
+            <p class="text-lg md:text-xl mb-14 max-w-2xl mx-auto animate-fadeInUp font-light leading-relaxed"
+               style="animation-delay:0.3s; color:rgba(255,255,255,0.55);">
+                <span class="en">I help white collar organizations eliminate silos, reduce friction and shift from managing resources to managing flow.</span>
+                <span class="pl">Pomagam organizacjom white collar eliminować silosy, redukować tarcia i przejść od zarządzania zasobami do zarządzania przepływem.</span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp" style="animation-delay:0.5s">
+                <a href="#contact"  class="btn-primary animate-pulse-amber">
+                    <span class="en">Let's Talk</span><span class="pl">Porozmawiajmy</span>
+                </a>
+                <a href="#approach" class="btn-outline">
+                    <span class="en">My Approach</span><span class="pl">Moje Podejście</span>
+                </a>
+            </div>
+
+            <!-- Flight-data style stats -->
+            <div class="mt-20 flex justify-center items-center gap-12 animate-fadeInUp" style="animation-delay:0.7s">
+                <div class="stat-block text-center">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label"><span class="en">Years</span><span class="pl">Lat</span></div>
+                </div>
+                <div class="v-sep" style="height:48px;"></div>
+                <div class="stat-block text-center">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label"><span class="en">Global Orgs</span><span class="pl">Globalnych Org.</span></div>
+                </div>
+                <div class="v-sep" style="height:48px;"></div>
+                <div class="stat-block text-center">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label"><span class="en">Programs</span><span class="pl">Programów</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll caret -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce" style="opacity:0.35; color:var(--teal);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="py-32 px-8 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <div class="section-label">
+                        <span class="en">About</span><span class="pl">O mnie</span>
+                    </div>
+                    <h2 class="font-serif text-4xl mb-8 heading-gradient" style="font-weight:300;">
+                        <span class="en">Miko J. Banas</span>
+                        <span class="pl">Mikołaj Jerzy Banaś</span>
+                    </h2>
+                    <div class="space-y-5 leading-relaxed" style="color:rgba(255,255,255,0.62);">
+                        <p>
+                            <span class="en">For 8 years I have been running Kaizen events and operational sprints inside some of Europe's largest organizations — Philips, Signify, Electrolux, Sonova and Sennheiser.</span>
+                            <span class="pl">Od 8 lat prowadzę Kaizen eventy i sprinty operacyjne w największych europejskich organizacjach — Philips, Signify, Electrolux, Sonova i Sennheiser.</span>
+                        </p>
+                        <p>
+                            <span class="en">My focus is on white collar environments — offices, planning functions, cross-functional teams — where Lean and Continuous Improvement remain largely unexplored territory, despite being where the biggest inefficiencies actually hide.</span>
+                            <span class="pl">Specjalizuję się w środowiskach white collar — biurach, funkcjach planowania, zespołach cross-funkcyjnych — gdzie Lean i Continuous Improvement pozostają w dużej mierze nieodkrytym terenem, mimo że to właśnie tam kryją się największe nieefektywności.</span>
+                        </p>
+                        <p>
+                            <span class="en">My approach is built on a simple truth: process improvements only stick when the people executing them believe in them. That's why I put change management and the human factor at the centre of every engagement.</span>
+                            <span class="pl">Moje podejście opiera się na prostej prawdzie: zmiany procesowe działają tylko wtedy, gdy wierzą w nie ludzie, którzy je wdrażają. Dlatego change management i czynnik ludzki stawiam w centrum każdego projektu.</span>
+                        </p>
+                    </div>
+                    <div class="mt-10 flex gap-4">
+                        <a href="#contact" class="btn-primary">
+                            <span class="en">Get in Touch</span><span class="pl">Napisz do mnie</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="highlight-box">
+                        <div class="text-xs tracking-widest uppercase mb-3" style="color:var(--teal); opacity:0.8;">
+                            <span class="en">Worked with</span><span class="pl">Doświadczenie</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="company-tag">Philips</span>
+                            <span class="company-tag">Signify</span>
+                            <span class="company-tag">Electrolux</span>
+                            <span class="company-tag">Sonova</span>
+                            <span class="company-tag">Sennheiser</span>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="text-xs tracking-widest uppercase mb-2" style="color:var(--teal); opacity:0.8;">
+                            <span class="en">Focus area</span><span class="pl">Specjalizacja</span>
+                        </div>
+                        <p class="text-sm" style="color:rgba(255,255,255,0.62);">
+                            <span class="en">White collar Lean — planning, cross-functional flow, office operations</span>
+                            <span class="pl">White collar Lean — planowanie, przepływ cross-funkcyjny, operacje biurowe</span>
+                        </p>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="text-xs tracking-widest uppercase mb-2" style="color:var(--teal); opacity:0.8;">
+                            <span class="en">Method</span><span class="pl">Metoda</span>
+                        </div>
+                        <p class="text-sm" style="color:rgba(255,255,255,0.62);">
+                            <span class="en">Human-centric change management — teams find and own their own solutions</span>
+                            <span class="pl">Human-centric change management — zespoły same znajdują i są właścicielami rozwiązań</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── APPROACH ── -->
+    <section id="approach" class="py-32 px-8" style="background:var(--navy-card);">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">The Problem</span><span class="pl">Problem</span>
+            </div>
+            <h2 class="font-serif text-4xl text-center mb-6 heading-gradient" style="font-weight:300;">
+                <span class="en">Resource efficient. Not flow efficient.</span>
+                <span class="pl">Resource efficient. Nie flow efficient.</span>
+            </h2>
+            <p class="text-center max-w-2xl mx-auto mb-20 leading-relaxed" style="color:rgba(255,255,255,0.45);">
+                <span class="en">Lean and flow thinking are well established in manufacturing and logistics. In white collar environments — where the product is information — this remains largely undiscovered.</span>
+                <span class="pl">Lean i myślenie przepływowe są dobrze ugruntowane w produkcji i logistyce. W środowiskach white collar — gdzie produktem jest informacja — to wciąż relatywnie nieodkryty teren.</span>
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-5 mb-16">
+                <div class="card text-center">
+                    <div class="font-serif text-3xl font-bold mb-3" style="color:var(--amber); opacity:0.5;">01</div>
+                    <h3 class="font-semibold mb-3 text-xs tracking-widest uppercase" style="color:var(--white);">
+                        <span class="en">Silo Setup</span><span class="pl">Silosy</span>
+                    </h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">Departments optimise locally. Incentives are set at function level. Cross-functional flow is nobody's job.</span>
+                        <span class="pl">Departamenty optymalizują lokalnie. Incentives ustawione na poziomie funkcji. Przepływ cross-funkcyjny nie należy do nikogo.</span>
+                    </p>
+                </div>
+                <div class="card text-center">
+                    <div class="font-serif text-3xl font-bold mb-3" style="color:var(--amber); opacity:0.5;">02</div>
+                    <h3 class="font-semibold mb-3 text-xs tracking-widest uppercase" style="color:var(--white);">
+                        <span class="en">100%+ Utilisation</span><span class="pl">Ponad 100% utilizacji</span>
+                    </h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">Everyone is busy. Resources are fully loaded. Yet delivery is slow, quality suffers and priorities constantly shift.</span>
+                        <span class="pl">Wszyscy są zajęci. Zasoby w pełni obciążone. A mimo to dostarczanie jest wolne, jakość cierpi, a priorytety ciągle się zmieniają.</span>
+                    </p>
+                </div>
+                <div class="card text-center">
+                    <div class="font-serif text-3xl font-bold mb-3" style="color:var(--amber); opacity:0.5;">03</div>
+                    <h3 class="font-semibold mb-3 text-xs tracking-widest uppercase" style="color:var(--white);">
+                        <span class="en">Flow Suffers</span><span class="pl">Flow cierpi</span>
+                    </h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">Work sits waiting. Handovers create friction. The organisation is resource efficient but not flow efficient.</span>
+                        <span class="pl">Praca czeka w kolejkach. Przekazania generują tarcia. Organizacja jest resource efficient, ale nie flow efficient.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="highlight-box max-w-3xl mx-auto text-center">
+                <p class="text-lg font-light leading-relaxed" style="font-family:'Playfair Display',serif; font-style:italic; color:rgba(255,255,255,0.85);">
+                    <span style="color:var(--amber); font-style:normal; font-size:1.4em; line-height:0; vertical-align:-4px; margin-right:4px;">"</span>
+                    <span class="en">I work with teams until they understand the system, identify the waste themselves and — crucially — believe in the solution enough to sustain it.</span>
+                    <span class="pl">Pracuję z zespołami dopóki nie zrozumieją systemu, same nie zidentyfikują marnotrawstwa i — co kluczowe — nie uwierzą w rozwiązanie na tyle, żeby je utrzymać.</span>
+                </p>
+                <div class="text-xs tracking-widest uppercase mt-5" style="color:var(--teal); opacity:0.6;">
+                    <span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SERVICES ── -->
+    <section id="services" class="py-32 px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Services</span><span class="pl">Usługi</span>
+            </div>
+            <h2 class="font-serif text-4xl text-center mb-6 heading-gradient" style="font-weight:300;">
+                <span class="en">What I offer</span><span class="pl">Co oferuję</span>
+            </h2>
+            <p class="text-center max-w-xl mx-auto mb-16 text-sm leading-relaxed" style="color:rgba(255,255,255,0.45);">
+                <span class="en">One standardised entry point. Six programs tailored to your organisation's specific challenges.</span>
+                <span class="pl">Jeden standardowy punkt wejścia. Sześć programów dopasowanych do specyficznych wyzwań Twojej organizacji.</span>
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase mb-4" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Standard</span><span class="pl">Standardowy</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Lean Basic</h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">A structured introduction to Lean thinking for teams with no prior exposure. A solid foundation before any deeper program.</span>
+                        <span class="pl">Ustrukturyzowane wprowadzenie do myślenia Lean dla zespołów bez wcześniejszego doświadczenia. Solidna podstawa przed każdym głębszym programem.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase mb-4" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Lean Advanced</h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">Advanced Lean tools and flow thinking adapted to your organisation's structure, language and current challenges.</span>
+                        <span class="pl">Zaawansowane narzędzia Lean i myślenie przepływowe dopasowane do struktury, języka i aktualnych wyzwań Twojej organizacji.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase mb-4" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Workshop Facilitation</span><span class="pl">Fasylitacja Warsztatów</span>
+                    </h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">Full-cycle facilitation — preparation, running the session, and structured followup to ensure changes land.</span>
+                        <span class="pl">Fasylitacja pełnego cyklu — przygotowanie, prowadzenie sesji i strukturyzowany followup, żeby zmiany rzeczywiście wylądowały.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase mb-4" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Kaizen Leadership Training</span><span class="pl">Szkolenie: Prowadzenie Kaizenów</span>
+                    </h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">Train your internal leaders to run Kaizen events independently. Build capability that stays in the organisation.</span>
+                        <span class="pl">Przeszkól wewnętrznych liderów do samodzielnego prowadzenia Kaizen eventów. Zbuduj kompetencje, które zostają w organizacji.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase mb-4" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Problem Solving</span><span class="pl">Szkolenie: Problem Solving</span>
+                    </h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">Structured problem-solving methods for white collar teams. Move beyond firefighting to root cause elimination.</span>
+                        <span class="pl">Ustrukturyzowane metody rozwiązywania problemów dla zespołów white collar. Odejście od gaszenia pożarów w kierunku eliminacji przyczyn źródłowych.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase mb-4" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Daily Management</span><span class="pl">Szkolenie: Daily Management</span>
+                    </h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">Daily Management systems built specifically for white collar environments — where the product is information, not a physical unit.</span>
+                        <span class="pl">Systemy Daily Management zbudowane specjalnie dla środowisk white collar — gdzie produktem jest informacja, a nie fizyczna jednostka.</span>
+                    </p>
+                </div>
+
+                <div class="card md:col-span-2 lg:col-span-3 lg:max-w-sm lg:mx-auto">
+                    <div class="text-xs tracking-widest uppercase mb-4" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">
+                        <span class="en">Workshop Leadership Training</span><span class="pl">Szkolenie: Prowadzenie Workshopów</span>
+                    </h3>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                        <span class="en">Equip your people to design and facilitate improvement workshops. Sustainable change from the inside.</span>
+                        <span class="pl">Wyposaż swoich ludzi w umiejętność projektowania i prowadzenia warsztatów usprawnieniowych. Trwała zmiana od wewnątrz.</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── WORK ── -->
+    <section id="work" class="py-32 px-8" style="background:var(--navy-card);">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Work</span><span class="pl">Realizacje</span>
+            </div>
+            <h2 class="font-serif text-4xl text-center mb-6 heading-gradient" style="font-weight:300;">
+                <span class="en">Selected engagements</span><span class="pl">Wybrane projekty</span>
+            </h2>
+            <p class="text-center max-w-xl mx-auto mb-16 text-sm" style="color:rgba(255,255,255,0.45);">
+                <span class="en">Real implementations inside global organisations.</span>
+                <span class="pl">Realne wdrożenia wewnątrz globalnych organizacji.</span>
+            </p>
+
+            <div class="space-y-4">
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6">
+                    <div class="md:w-36 shrink-0">
+                        <div class="font-semibold tracking-wide" style="color:var(--amber);">Philips</div>
+                        <div class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Global</div>
+                    </div>
+                    <div class="v-sep hidden md:block" style="height:auto; min-height:40px;"></div>
+                    <div>
+                        <h3 class="font-medium mb-2">
+                            <span class="en">Daily Management System — 3-level implementation</span>
+                            <span class="pl">System Daily Management — wdrożenie na 3 poziomach</span>
+                        </h3>
+                        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                            <span class="en">Design and implementation of a complete Daily Management system spanning three levels of the organisation — from shop floor to senior leadership.</span>
+                            <span class="pl">Zaprojektowanie i wdrożenie kompletnego systemu Daily Management obejmującego trzy poziomy organizacji — od poziomu operacyjnego do wyższej kadry zarządzającej.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6">
+                    <div class="md:w-36 shrink-0">
+                        <div class="font-semibold tracking-wide" style="color:var(--amber);">Electrolux</div>
+                        <div class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">CEE Region</div>
+                    </div>
+                    <div class="v-sep hidden md:block" style="height:auto; min-height:40px;"></div>
+                    <div>
+                        <h3 class="font-medium mb-2">
+                            <span class="en">Daily Management programme + Demand Planning Accuracy (DPA)</span>
+                            <span class="pl">Program Daily Management + poprawa DPA (Demand Planning Accuracy)</span>
+                        </h3>
+                        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                            <span class="en">Full Daily Management programme rollout combined with targeted work on demand planning accuracy across the CEE market — directly with the sales organisations responsible for forecasting.</span>
+                            <span class="pl">Pełne wdrożenie programu Daily Management połączone z dedykowaną pracą nad dokładnością planowania popytu na rynku CEE — bezpośrednio z organizacjami sprzedażowymi odpowiedzialnymi za prognozowanie.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6">
+                    <div class="md:w-36 shrink-0">
+                        <div class="font-semibold tracking-wide" style="color:var(--amber);">Sennheiser</div>
+                        <div class="text-xs mt-1" style="color:rgba(255,255,255,0.3);">Global</div>
+                    </div>
+                    <div class="v-sep hidden md:block" style="height:auto; min-height:40px;"></div>
+                    <div>
+                        <h3 class="font-medium mb-2">
+                            <span class="en">SIOP &amp; S&amp;OP implementation — global scope</span>
+                            <span class="pl">Implementacja SIOP i S&amp;OP — zasięg globalny</span>
+                        </h3>
+                        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">
+                            <span class="en">Implementation of SIOP and S&OP processes at global level, working directly with international sales organisations responsible for planning and demand management.</span>
+                            <span class="pl">Implementacja procesów SIOP i S&OP na poziomie globalnym, praca bezpośrednio z międzynarodowymi organizacjami sprzedażowymi odpowiedzialnymi za planowanie i zarządzanie popytem.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6" style="opacity:0.5;">
+                    <div class="md:w-36 shrink-0">
+                        <div class="font-semibold tracking-wide" style="color:rgba(232,160,48,0.6);">Signify</div>
+                        <div class="text-xs mt-1" style="color:rgba(255,255,255,0.25);">—</div>
+                    </div>
+                    <div class="v-sep hidden md:block" style="height:auto; min-height:40px;"></div>
+                    <div>
+                        <p class="text-sm italic" style="color:rgba(255,255,255,0.35);">
+                            <span class="en">Details coming soon.</span>
+                            <span class="pl">Szczegóły wkrótce.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col md:flex-row md:items-start gap-6" style="opacity:0.5;">
+                    <div class="md:w-36 shrink-0">
+                        <div class="font-semibold tracking-wide" style="color:rgba(232,160,48,0.6);">Sonova</div>
+                        <div class="text-xs mt-1" style="color:rgba(255,255,255,0.25);">—</div>
+                    </div>
+                    <div class="v-sep hidden md:block" style="height:auto; min-height:40px;"></div>
+                    <div>
+                        <p class="text-sm italic" style="color:rgba(255,255,255,0.35);">
+                            <span class="en">Details coming soon.</span>
+                            <span class="pl">Szczegóły wkrótce.</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TEAM ── -->
+    <section id="team" class="py-32 px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Team</span><span class="pl">Zespół</span>
+            </div>
+            <h2 class="font-serif text-4xl text-center mb-6 heading-gradient" style="font-weight:300;">
+                <span class="en">You're not hiring a freelancer</span>
+                <span class="pl">Nie zatrudniasz freelancera</span>
+            </h2>
+            <p class="text-center max-w-2xl mx-auto mb-16 leading-relaxed text-sm" style="color:rgba(255,255,255,0.45);">
+                <span class="en">Behind every engagement is a network of practitioners who are still actively working inside global organisations — bringing you what works right now, not what worked ten years ago.</span>
+                <span class="pl">Za każdym projektem stoi sieć praktyków, którzy nadal aktywnie pracują wewnątrz globalnych organizacji — dostarczając Ci to, co działa teraz, nie to, co działało dziesięć lat temu.</span>
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-5">
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase mb-4" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Lead consultant</span><span class="pl">Lead consultant</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1">
+                        <span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span>
+                    </h3>
+                    <p class="text-xs tracking-wide mb-4" style="color:rgba(255,255,255,0.35);">
+                        <span class="en">White Collar Lean &amp; Flow | Change Management</span>
+                        <span class="pl">White Collar Lean &amp; Flow | Change Management</span>
+                    </p>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.55);">
+                        <span class="en">8 years running Kaizen events and operational sprints in global organisations. Proprietary approach built on human-centric change management and deep awareness of silo-driven constraints.</span>
+                        <span class="pl">8 lat prowadzenia Kaizen eventów i sprintów operacyjnych w globalnych organizacjach. Autorskie podejście zbudowane na human-centric change management i głębokiej świadomości ograniczeń wynikających z silosów.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="text-xs tracking-widest uppercase mb-4" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Technology partner</span><span class="pl">Partner technologiczny</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1">mikolajorsztynowicz.pl</h3>
+                    <p class="text-xs tracking-wide mb-4" style="color:rgba(255,255,255,0.35);">Power BI | Dashboards | Reporting</p>
+                    <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.55);">
+                        <span class="en">Specialist in Power BI dashboards and operational reporting. Multiple live implementations across industries. Turns your data into a Daily Management tool.</span>
+                        <span class="pl">Specjalista od dashboardów Power BI i raportowania operacyjnego. Wiele wdrożeń produkcyjnych w różnych branżach. Zamienia Twoje dane w narzędzie Daily Management.</span>
+                    </p>
+                </div>
+
+                <div class="card md:col-span-2">
+                    <div class="text-xs tracking-widest uppercase mb-6" style="color:var(--teal); opacity:0.7;">
+                        <span class="en">Expert network — active practitioners, not retired consultants</span>
+                        <span class="pl">Sieć ekspertów — aktywni praktycy, nie emerytowani konsultanci</span>
+                    </div>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div>
+                            <div class="text-sm font-medium mb-1" style="color:var(--amber);">Lean Masters</div>
+                            <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.4);">
+                                <span class="en">Still active in global organisations. Access to what's being implemented today.</span>
+                                <span class="pl">Nadal aktywni w globalnych organizacjach. Dostęp do tego, co jest wdrażane dziś.</span>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium mb-1" style="color:var(--amber);">Six Sigma Black Belts</div>
+                            <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.4);">
+                                <span class="en">Deep analytical capability for complex problem-solving engagements.</span>
+                                <span class="pl">Zaawansowane kompetencje analityczne do złożonych projektów problem-solving.</span>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium mb-1" style="color:var(--amber);">EY &amp; Alvarez and Marsal</div>
+                            <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.4);">
+                                <span class="en">Senior consulting experience for large-scale transformation programmes.</span>
+                                <span class="pl">Doświadczenie senior consulting przy dużych programach transformacyjnych.</span>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium mb-1" style="color:var(--amber);">Growth Leaders</div>
+                            <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.4);">
+                                <span class="en">Scaling, e-commerce and growth operations expertise beyond traditional corporate.</span>
+                                <span class="pl">Ekspertyza w skalowaniu, e-commerce i operacjach wzrostu poza tradycyjną korporacją.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SAD TRUTHS ── -->
+    <section class="py-32 px-8" style="background:var(--navy-card);">
+        <div class="max-w-4xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Sad but true</span><span class="pl">Smutne ale prawdziwe</span>
+            </div>
+            <h2 class="font-serif text-4xl text-center mb-4 heading-gradient" style="font-weight:300;">
+                <span class="en">Corporate truths nobody puts on a slide</span>
+                <span class="pl">Prawdy o korpo, których nikt nie wrzuca na slajd</span>
+            </h2>
+            <p class="text-center text-sm mb-16" style="color:rgba(255,255,255,0.35);">
+                <span class="en">If any of these sound familiar, we should talk.</span>
+                <span class="pl">Jeśli któraś z nich brzmi znajomo — porozmawiajmy.</span>
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+                <div class="card">
+                    <div class="font-serif text-3xl mb-4" style="color:var(--amber); opacity:0.35; line-height:1;">"</div>
+                    <p class="leading-relaxed" style="color:rgba(255,255,255,0.8);">
+                        <span class="en">Being right isn't enough in corporate. Someone with authority still has to agree you're right.</span>
+                        <span class="pl">W korporacji nie wystarczy mieć rację — rację ktoś jeszcze musi ci przyznać.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="font-serif text-3xl mb-4" style="color:var(--amber); opacity:0.35; line-height:1;">"</div>
+                    <p class="leading-relaxed" style="color:rgba(255,255,255,0.8);">
+                        <span class="en">If it's not on a slide, it doesn't exist.</span>
+                        <span class="pl">Czego nie ma na slajdzie, to nie istnieje.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="font-serif text-3xl mb-4" style="color:var(--amber); opacity:0.35; line-height:1;">"</div>
+                    <p class="leading-relaxed" style="color:rgba(255,255,255,0.8);">
+                        <span class="en">Before you do anything in corporate, think first about how you'll present it.</span>
+                        <span class="pl">W korpo zanim cokolwiek zrobisz, zastanów się najpierw jak to pokażesz.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="font-serif text-3xl mb-4" style="color:var(--amber); opacity:0.35; line-height:1;">"</div>
+                    <p class="leading-relaxed" style="color:rgba(255,255,255,0.8);">
+                        <span class="en">Incentives drive behaviours.</span>
+                        <span class="pl">Incentives napędzają zachowania.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="font-serif text-3xl mb-4" style="color:var(--amber); opacity:0.35; line-height:1;">"</div>
+                    <p class="leading-relaxed" style="color:rgba(255,255,255,0.8);">
+                        <span class="en">Nobody will give you as much as sales will promise you.</span>
+                        <span class="pl">Nikt ci tyle nie da ile sprzedaż ci obieca.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="font-serif text-3xl mb-4" style="color:var(--amber); opacity:0.35; line-height:1;">"</div>
+                    <p class="leading-relaxed" style="color:rgba(255,255,255,0.8);">
+                        <span class="en">Let those who are paid accordingly make the decisions.</span>
+                        <span class="pl">Daj podejmować decyzje tym, którzy mają za to płacone odpowiednio.</span>
+                    </p>
+                </div>
+
+                <div class="card md:col-span-2">
+                    <div class="font-serif text-3xl mb-4" style="color:var(--amber); opacity:0.35; line-height:1;">"</div>
+                    <p class="leading-relaxed" style="color:rgba(255,255,255,0.8);">
+                        <span class="en">Never fight corporate inertia — and never stand in the direction it's moving.</span>
+                        <span class="pl">Nigdy nie siłuj się z bezwładnością korporacji i nie stawaj na kierunku w którym się porusza.</span>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="flight-divider mt-16">
+                <span><span class="en">This is the system. We can change it.</span><span class="pl">To jest system. Możemy go zmienić.</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="py-32 px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="section-label text-center">
+                <span class="en">Contact</span><span class="pl">Kontakt</span>
+            </div>
+            <h2 class="font-serif text-4xl text-center mb-6 heading-gradient" style="font-weight:300;">
+                <span class="en">Let's talk about your organisation</span>
+                <span class="pl">Porozmawiajmy o Twojej organizacji</span>
+            </h2>
+            <p class="text-center max-w-xl mx-auto mb-16 leading-relaxed text-sm" style="color:rgba(255,255,255,0.45);">
+                <span class="en">Tell me where the friction is. I'll tell you honestly if I can help — and what that would look like.</span>
+                <span class="pl">Powiedz mi gdzie są tarcia. Powiem Ci szczerze czy mogę pomóc — i jak by to wyglądało.</span>
+            </p>
+
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                             style="border:1px solid rgba(58,191,184,0.3); background:rgba(58,191,184,0.06); color:var(--teal);">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs tracking-widest uppercase mb-1" style="color:var(--teal); opacity:0.7;">Email</div>
+                            <a href="mailto:mikolajbanas@gmail.com" class="text-sm transition-colors"
+                               style="color:rgba(255,255,255,0.75);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">
+                                mikolajbanas@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                             style="border:1px solid rgba(58,191,184,0.3); background:rgba(58,191,184,0.06); color:var(--teal);">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs tracking-widest uppercase mb-1" style="color:var(--teal); opacity:0.7;">LinkedIn</div>
+                            <a href="https://linkedin.com/in/mikolajbanas" target="_blank" class="text-sm transition-colors"
+                               style="color:rgba(255,255,255,0.75);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">
+                                linkedin.com/in/mikolajbanas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="space-y-5" onsubmit="handleSubmit(event)">
+                    <div>
+                        <label class="block text-xs tracking-widest uppercase mb-2" style="color:var(--teal); opacity:0.7;">
+                            <span class="en">Name</span><span class="pl">Imię i nazwisko</span>
+                        </label>
+                        <input type="text" required
+                               class="w-full rounded-sm px-4 py-3 text-sm focus:outline-none transition-colors placeholder:text-white/20"
+                               style="background:rgba(13,30,53,0.8); border:1px solid rgba(255,255,255,0.1); color:#fff;"
+                               onfocus="this.style.borderColor='rgba(58,191,184,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+                               placeholder="Jan Kowalski">
+                    </div>
+                    <div>
+                        <label class="block text-xs tracking-widest uppercase mb-2" style="color:var(--teal); opacity:0.7;">Email</label>
+                        <input type="email" required
+                               class="w-full rounded-sm px-4 py-3 text-sm focus:outline-none transition-colors placeholder:text-white/20"
+                               style="background:rgba(13,30,53,0.8); border:1px solid rgba(255,255,255,0.1); color:#fff;"
+                               onfocus="this.style.borderColor='rgba(58,191,184,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+                               placeholder="jan@firma.pl">
+                    </div>
+                    <div>
+                        <label class="block text-xs tracking-widest uppercase mb-2" style="color:var(--teal); opacity:0.7;">
+                            <span class="en">What's the challenge?</span><span class="pl">Jaki masz problem?</span>
+                        </label>
+                        <textarea rows="4"
+                                  class="w-full rounded-sm px-4 py-3 text-sm focus:outline-none transition-colors placeholder:text-white/20 resize-none"
+                                  style="background:rgba(13,30,53,0.8); border:1px solid rgba(255,255,255,0.1); color:#fff;"
+                                  onfocus="this.style.borderColor='rgba(58,191,184,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+                                  placeholder="..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full" id="submit-btn">
+                        <span class="en">Send Message</span><span class="pl">Wyślij wiadomość</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="py-12" style="border-top:1px solid rgba(58,191,184,0.12);">
+        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-serif text-xl animate-shimmer" style="color:var(--teal); letter-spacing:3px;">MB</div>
+            <p class="text-xs tracking-wide text-center" style="color:rgba(255,255,255,0.25);">
+                © 2026 <span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span>.
+                <span class="en">Flow efficiency for white collar organisations.</span>
+                <span class="pl">Flow efficiency dla organizacji white collar.</span>
+            </p>
+            <div class="flex gap-6">
+                <a href="mailto:mikolajbanas@gmail.com"
+                   class="text-xs tracking-widest uppercase transition-colors"
+                   style="color:rgba(255,255,255,0.25);"
+                   onmouseover="this.style.color='rgba(58,191,184,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.25)'">Email</a>
+                <a href="https://linkedin.com/in/mikolajbanas" target="_blank"
+                   class="text-xs tracking-widest uppercase transition-colors"
+                   style="color:rgba(255,255,255,0.25);"
+                   onmouseover="this.style.color='rgba(58,191,184,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.25)'">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.documentElement.setAttribute('data-lang', lang);
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('#btn-' + lang + ', #btn-' + lang + '-m').forEach(btn => btn.classList.add('active'));
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.textContent = '...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.textContent = '✓';
+                btn.style.background = '#3ABFB8';
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="en">Send Message</span><span class="pl">Wyślij wiadomość</span>';
+                    btn.style.background = '';
+                    btn.disabled = false;
+                    e.target.reset();
+                    const lang = document.documentElement.getAttribute('data-lang');
+                    if (lang === 'pl') setLang('pl');
+                }, 2000);
+            }, 1200);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.7s ease, transform 0.7s ease, border-color 0.4s ease, box-shadow 0.4s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
