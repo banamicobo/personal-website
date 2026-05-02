@@ -468,7 +468,7 @@
                         <span class="en">Contact</span><span class="pl">Kontakt</span>
                     </a>
                     <div class="flex gap-2 ml-4 items-center">
-                        <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()">☀ BRIGHT</button>
+                        <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()">☀</button>
                         <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
                         <button class="lang-btn"        id="btn-pl" onclick="setLang('pl')">PL</button>
                     </div>
@@ -1175,7 +1175,7 @@
             const html = document.documentElement;
             const isDark = html.getAttribute('data-theme') !== 'bright';
             html.setAttribute('data-theme', isDark ? 'bright' : 'dark');
-            const label = isDark ? '🌙 DARK' : '☀ BRIGHT';
+            const label = isDark ? '🌙' : '☀';
             document.querySelectorAll('#theme-toggle, #theme-toggle-m').forEach(b => b.textContent = label);
         }
 
