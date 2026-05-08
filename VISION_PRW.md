@@ -87,9 +87,25 @@ Wynik: organizacje które są **resource efficient, ale nie flow efficient**.
 
 - **Cel:** potwierdzenie istnienia + zaufanie + pokazanie że klient dostanie realną zmianę
 - **Język:** dwujęzyczna PL/EN
-- **CTA:** "Porozmawiajmy" — nie sprzedaż produktu, tylko inicjacja rozmowy
+- **CTA:** "Porozmawiajmy" / "Zarezerwuj spotkanie alignment" (mailto) — nie sprzedaż produktu, tylko inicjacja rozmowy
+- **Cena:** premium, ustalana na spotkaniu — nie pokazujemy na stronie
 - **Zdjęcie:** brak na razie — do dodania przed deployem (kluczowe dla wiarygodności)
 - Sekcja humorystycznych maksym korpo — tylko dyktowane przez Mikołaja, nigdy wymyślone przez Claude
+
+## Styl i design
+
+- **Ton:** minimal japoński — dużo powietrza, czerń + off-white, jeden akcent
+- **Typografia:** Noto Serif JP (nagłówki) + Inter (tekst)
+- **Zero:** gradientów, stocków — biel, linie, typografia prowadzą
+- **Punkty odniesienia** (klimat, nie kopiowanie): Muji, 37signals/Basecamp, Monocle
+
+## Kaizen — produkt flagowy (szczegóły)
+
+- **Format:** 5 dni stacjonarnie + online follow-up
+- **Dla kogo:** MŚP w Europie, skalujące się organizacje
+- **Bolączki grupy docelowej:** scale-up bez chaosu, procesy które uwierają, wypalony zespół
+- **Social proof:** liczba absolwentów (duża cyfra) + pasek logo firm (Philips, Electrolux, Sennheiser…)
+- **Sekcje strony:** Hero → Dla kogo → Program 5 dni → Social proof → Prowadzący → FAQ → Final CTA
 
 ---
 
