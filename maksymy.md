@@ -19,3 +19,5 @@
 7. Nigdy nie siłuj się z bezwładnością korporacji i nie stawaj na kierunku w którym się porusza.
 
 8. Im wyżej na "iceberg of ignorance" tym mniejszy apetyt na zmianę własnego sposobu pracy i większa chęć ustawienia procesów pod własną wygodę — nawet kosztem wyników.
+
+9. Z kimkolwiek się skonfrontujesz albo pokłócisz — wiedz, że w ciągu najbliższego miesiąca będziesz potrzebował jego pomocy lub traficie do jednego zespołu projektowego.
