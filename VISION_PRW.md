@@ -112,10 +112,12 @@ Wynik: organizacje które są **resource efficient, ale nie flow efficient**.
 ## Do zrobienia
 
 - [ ] Opisy realizacji — Signify i Sonova: co konkretnie Mikołaj zrobił, jaki był efekt
+- [ ] Case studies z liczbami — Philips, Electrolux, Sennheiser (lead time, ROI, % czasu uwolnionego, etc.) — prerequisite do sprzedaży pilotów
 - [ ] Zdjęcie profilowe — krytyczne dla wiarygodności
 - [ ] Deploy na Vercel
 - [ ] Aktualizacja profilu LinkedIn — zsynchronizować z contentem strony
+- [ ] Rejestracja w BUR (Baza Usług Rozwojowych) — obniża barierę zakupową dla polskich klientów (KFS)
 
 ---
 
-*Ostatnia aktualizacja: 2026-05-08*
+*Ostatnia aktualizacja: 2026-05-21*
