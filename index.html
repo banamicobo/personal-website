@@ -8,25 +8,24 @@
     <meta name="description" content="Lean & Flow consultant for white collar organizations. Helping companies shift from resource efficiency to flow efficiency.">
     <meta name="author" content="Mikołaj Jerzy Banaś">
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23FFFFFF'>M</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23051C2C'>M</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --black: #000000;
-            --off-black: #0a0a0a;
-            --rich-black: #050505;
-            --gold: #FFFFFF;
-            --gold-light: #E8E8E8;
-            --gold-dark: #CCCCCC;
-            --gold-shimmer: #FFFFFF;
+            --navy: #051C2C;
+            --navy-mid: #0D2B3E;
+            --blue: #1D70B8;
+            --blue-light: #E8F1FA;
             --white: #FFFFFF;
-            --off-white: #F8F8F8;
+            --light: #F5F5F5;
+            --border: #D9D9D9;
+            --text: #231F20;
+            --text-mid: #555555;
+            --text-light: #888888;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,11 +33,11 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--black);
-            color: var(--white);
+            background: var(--white);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .font-serif { font-family: 'Playfair Display', serif; }
@@ -49,327 +48,465 @@
 
         .lang-btn {
             background: transparent;
-            color: rgba(255,255,255,0.4);
-            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-mid);
+            border: 1px solid var(--border);
             padding: 4px 12px;
-            border-radius: 2px;
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
         }
         .lang-btn.active {
-            color: #fff;
-            border-color: rgba(255,255,255,0.8);
-        }
-        .lang-btn:hover { color: #fff; border-color: rgba(255,255,255,0.6); }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes shimmer {
-            0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.15); }
-            50% { opacity: 0.85; text-shadow: 0 0 30px rgba(255,255,255,0.25); }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        @keyframes pulse-border {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.2); }
-            50% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
-        }
-
-        .animate-fadeInUp { animation: fadeInUp 1.2s ease-out forwards; }
-        .animate-shimmer { animation: shimmer 4s ease-in-out infinite; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-pulse-border { animation: pulse-border 3s ease-in-out infinite; }
-
-        /* Text */
-        .white-text { color: var(--white); }
-        .white-gradient {
-            background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 50%, #FFFFFF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Buttons */
-        .btn-primary {
-            background: var(--white);
-            color: var(--black);
-            padding: 16px 36px;
-            border-radius: 2px;
-            font-weight: 500;
-            font-size: 13px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            display: inline-block;
-        }
-        .btn-primary:hover {
-            background: var(--gold-light);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255,255,255,0.15);
-        }
-        .btn-outline {
+            color: var(--navy);
+            border-color: var(--navy);
             background: transparent;
-            color: var(--white);
-            padding: 16px 36px;
-            border: 1px solid rgba(255,255,255,0.6);
-            border-radius: 2px;
-            font-weight: 400;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            display: inline-block;
         }
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--black);
-            box-shadow: 0 8px 30px rgba(255,255,255,0.12);
-        }
-
-        /* Cards */
-        .card {
-            background: var(--rich-black);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 4px;
-            padding: 40px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-quote { padding-top: 10px; padding-bottom: 10px; }
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255,255,255,0.35);
-            box-shadow: 0 20px 60px rgba(255,255,255,0.06);
-        }
+        .lang-btn:hover { border-color: var(--navy); color: var(--navy); }
 
         /* Nav */
         .nav-wrap {
-            background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
         }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--navy);
+            text-decoration: none;
+        }
+        .nav-logo span { font-weight: 300; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-mid);
+            text-decoration: none;
+            transition: color 0.2s;
+            letter-spacing: 0.2px;
+        }
+        .nav-links a:hover { color: var(--navy); }
+        .nav-cta {
+            background: var(--navy);
+            color: var(--white) !important;
+            padding: 8px 20px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: background 0.2s !important;
+        }
+        .nav-cta:hover { background: var(--navy-mid) !important; color: var(--white) !important; }
 
-        /* Section divider */
-        .section-label {
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            padding: 14px 32px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: var(--navy-mid); }
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--navy);
+            padding: 13px 32px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--navy);
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn-outline:hover { background: var(--navy); color: var(--white); }
+        .btn-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+        .btn-text:hover { gap: 12px; }
+        .btn-text::after { content: '→'; }
+
+        /* Section labels */
+        .eyebrow {
             font-size: 11px;
-            letter-spacing: 3px;
+            font-weight: 600;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 20px;
+            color: var(--blue);
+            margin-bottom: 16px;
+            display: block;
         }
 
-        /* Highlight box */
-        .highlight-box {
-            border-left: 2px solid rgba(255,255,255,0.6);
-            padding: 20px 28px;
-            background: rgba(255,255,255,0.03);
+        /* Dividers */
+        .divider { border: none; border-top: 1px solid var(--border); }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 36px;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 24px rgba(5,28,44,0.10);
+            border-color: #bbb;
+        }
+        .card-navy {
+            background: var(--navy);
+            color: var(--white);
+            padding: 36px;
+        }
+        .card-light {
+            background: var(--light);
+            padding: 36px;
+            border: none;
+        }
+
+        /* Insight card (McKinsey editorial style) */
+        .insight-card {
+            border-top: 3px solid var(--navy);
+            padding-top: 20px;
+        }
+        .insight-card .tag {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .insight-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            line-height: 1.4;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+        .insight-card p {
+            font-size: 13px;
+            color: var(--text-mid);
+            line-height: 1.6;
+        }
+
+        /* Work/case row */
+        .case-row {
+            display: flex;
+            gap: 40px;
+            padding: 32px 0;
+            border-top: 1px solid var(--border);
+            align-items: flex-start;
+        }
+        .case-row:last-child { border-bottom: 1px solid var(--border); }
+        .case-label {
+            min-width: 140px;
+        }
+        .case-label .company {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        .case-label .region {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* Stats */
+        .stat-block {
+            border-left: 3px solid var(--blue);
+            padding-left: 20px;
+        }
+
+        /* Quote */
+        .pullquote {
+            border-left: 4px solid var(--navy);
+            padding: 24px 32px;
+            background: var(--light);
+        }
+        .pullquote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            line-height: 1.5;
+            color: var(--navy);
+            font-style: italic;
+        }
+        .pullquote cite {
+            display: block;
+            margin-top: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-style: normal;
+        }
+
+        /* Form */
+        .form-input {
+            width: 100%;
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .form-input:focus { border-color: var(--navy); }
+        .form-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-mid);
+            margin-bottom: 8px;
+        }
+
+        /* Hero */
+        .hero-panel {
+            background: var(--navy);
+            color: var(--white);
         }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--rich-black); }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+        ::-webkit-scrollbar-track { background: var(--light); }
+        ::-webkit-scrollbar-thumb { background: var(--border); }
 
+        /* Responsive */
         @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-inner { padding: 0 20px; }
             .card { padding: 24px; }
-            .btn-primary, .btn-outline { padding: 12px 24px; font-size: 12px; }
+            .case-row { flex-direction: column; gap: 12px; }
+            .case-label { min-width: auto; }
         }
-    </style>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'rich-black': '#050505',
-                        'off-black': '#0a0a0a',
-                    },
-                    fontFamily: { 'serif': ['Playfair Display', 'serif'] }
-                }
-            }
+        /* Animations — subtle, McKinsey-style */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
-    </script>
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
 </head>
 <body>
 
     <!-- Navigation -->
-    <nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
-        <div class="container mx-auto px-8 py-5">
-            <div class="flex justify-between items-center">
-                <div class="text-xl font-serif animate-shimmer tracking-widest">MB</div>
-                <div class="hidden md:flex gap-8 items-center">
-                    <a href="#about" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
-                        <span class="en">About</span><span class="pl">O mnie</span>
-                    </a>
-                    <a href="#approach" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
-                        <span class="en">Approach</span><span class="pl">Podejście</span>
-                    </a>
-                    <a href="#services" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
-                        <span class="en">Services</span><span class="pl">Usługi</span>
-                    </a>
-                    <a href="#work" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
-                        <span class="en">Work</span><span class="pl">Realizacje</span>
-                    </a>
-                    <a href="#team" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
-                        <span class="en">Team</span><span class="pl">Zespół</span>
-                    </a>
-                    <a href="#contact" class="text-white/60 hover:text-white transition-all duration-300 text-xs tracking-widest uppercase">
-                        <span class="en">Contact</span><span class="pl">Kontakt</span>
-                    </a>
-                    <div class="flex gap-2 ml-4">
-                        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
-                        <button class="lang-btn" id="btn-pl" onclick="setLang('pl')">PL</button>
-                    </div>
+    <nav class="nav-wrap">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">Miko J. Banas <span>— Flow Efficiency</span></a>
+            <div class="nav-links">
+                <a href="#about"><span class="en">About</span><span class="pl">O mnie</span></a>
+                <a href="#approach"><span class="en">Approach</span><span class="pl">Podejście</span></a>
+                <a href="#services"><span class="en">Services</span><span class="pl">Usługi</span></a>
+                <a href="#work"><span class="en">Work</span><span class="pl">Realizacje</span></a>
+                <a href="#team"><span class="en">Team</span><span class="pl">Zespół</span></a>
+                <div style="display:flex;gap:6px;margin-left:8px;">
+                    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-pl" onclick="setLang('pl')">PL</button>
                 </div>
-                <!-- Mobile lang switcher -->
-                <div class="flex md:hidden gap-2">
-                    <button class="lang-btn active" id="btn-en-m" onclick="setLang('en')">EN</button>
-                    <button class="lang-btn" id="btn-pl-m" onclick="setLang('pl')">PL</button>
-                </div>
+                <a href="#contact" class="nav-cta">
+                    <span class="en">Contact</span><span class="pl">Kontakt</span>
+                </a>
+            </div>
+            <div style="display:flex;gap:6px;" class="md-hidden">
+                <button class="lang-btn active" id="btn-en-m" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" id="btn-pl-m" onclick="setLang('pl')">PL</button>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-20 left-16 w-48 h-48 bg-white/3 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-32 right-20 w-64 h-64 bg-white/2 rounded-full blur-3xl animate-float" style="animation-delay:3s"></div>
-        </div>
-
-        <div class="relative z-10 text-center max-w-5xl mx-auto px-8 pt-24">
-            <div class="section-label animate-fadeInUp">Lean & Flow Consulting</div>
-
-            <h1 class="font-serif text-5xl md:text-7xl font-black mb-8 leading-tight animate-fadeInUp" style="animation-delay:0.1s">
-                <span class="en white-gradient">
-                    Lean × AI<br>
-                    <span style="-webkit-text-fill-color: rgba(255,255,255,0.5)">for white collar</span><br>organisations.
-                </span>
-                <span class="pl white-gradient">
-                    Lean × AI<br>
-                    <span style="-webkit-text-fill-color: rgba(255,255,255,0.5)">dla organizacji</span><br>white collar.
-                </span>
-            </h1>
-
-            <p class="text-lg md:text-xl text-white/60 mb-14 max-w-2xl mx-auto animate-fadeInUp font-light leading-relaxed" style="animation-delay:0.3s">
-                <span class="en">Most AI consultants don't understand flow. Most Lean consultants are afraid of AI. I combine both — to free your people from broken processes and give them back time for work that actually requires a human.</span>
-                <span class="pl">Większość konsultantów AI nie rozumie flow. Większość konsultantów Lean boi się AI. Łączę jedno z drugim — żeby uwolnić Twoich ludzi od zepsutych procesów i oddać im czas na pracę, która naprawdę wymaga człowieka.</span>
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp" style="animation-delay:0.5s">
-                <a href="#contact" class="btn-primary">
-                    <span class="en">Let's Talk</span><span class="pl">Porozmawiajmy</span>
-                </a>
-                <a href="#approach" class="btn-outline">
-                    <span class="en">My Approach</span><span class="pl">Moje Podejście</span>
-                </a>
-            </div>
-
-            <div class="mt-20 flex justify-center gap-16 animate-fadeInUp" style="animation-delay:0.7s">
-                <div class="text-center">
-                    <div class="text-3xl font-serif font-bold">8+</div>
-                    <div class="text-xs text-white/40 tracking-widest uppercase mt-1">
-                        <span class="en">Years</span><span class="pl">Lat</span>
-                    </div>
-                </div>
-                <div class="w-px bg-white/10"></div>
-                <div class="text-center">
-                    <div class="text-3xl font-serif font-bold">5</div>
-                    <div class="text-xs text-white/40 tracking-widest uppercase mt-1">
-                        <span class="en">Global Orgs</span><span class="pl">Globalnych Org.</span>
-                    </div>
-                </div>
-                <div class="w-px bg-white/10"></div>
-                <div class="text-center">
-                    <div class="text-3xl font-serif font-bold">Lean<br><span class="text-white/30">×</span><br>AI</div>
-                    <div class="text-xs text-white/40 tracking-widest uppercase mt-1">
-                        <span class="en">The niche</span><span class="pl">Nisza</span>
-                    </div>
+    <section style="padding-top:64px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;min-height:600px;">
+            <!-- Left: dark navy panel -->
+            <div class="hero-panel" style="padding:80px 60px;display:flex;flex-direction:column;justify-content:center;">
+                <span class="eyebrow" style="color:rgba(255,255,255,0.5);">Lean & Flow Consulting</span>
+                <h1 class="font-serif" style="font-size:clamp(36px,4vw,54px);line-height:1.2;color:#fff;font-weight:700;margin-bottom:28px;">
+                    <span class="en">Lean × AI<br>for white collar<br>organisations.</span>
+                    <span class="pl">Lean × AI<br>dla organizacji<br>white collar.</span>
+                </h1>
+                <p style="font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:40px;max-width:400px;">
+                    <span class="en">Most AI consultants don't understand flow. Most Lean consultants are afraid of AI. I combine both — to free your people from broken processes and give them back time for work that actually requires a human.</span>
+                    <span class="pl">Większość konsultantów AI nie rozumie flow. Większość konsultantów Lean boi się AI. Łączę jedno z drugim — żeby uwolnić Twoich ludzi od zepsutych procesów i oddać im czas na pracę, która naprawdę wymaga człowieka.</span>
+                </p>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                    <a href="#contact" class="btn-primary" style="background:#fff;color:var(--navy);">
+                        <span class="en">Let's Talk</span><span class="pl">Porozmawiajmy</span>
+                    </a>
+                    <a href="#approach" class="btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.5);">
+                        <span class="en">My Approach</span><span class="pl">Moje Podejście</span>
+                    </a>
                 </div>
             </div>
+            <!-- Right: light panel with stats -->
+            <div style="background:var(--light);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px 32px;margin-bottom:48px;">
+                    <div class="stat-block">
+                        <div class="font-serif" style="font-size:48px;font-weight:700;color:var(--navy);line-height:1;">8+</div>
+                        <div style="font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-top:8px;">
+                            <span class="en">Years of practice</span><span class="pl">Lat doświadczenia</span>
+                        </div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="font-serif" style="font-size:48px;font-weight:700;color:var(--navy);line-height:1;">5</div>
+                        <div style="font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-top:8px;">
+                            <span class="en">Global organisations</span><span class="pl">Globalnych organizacji</span>
+                        </div>
+                    </div>
+                    <div class="stat-block" style="border-color:var(--navy);">
+                        <div class="font-serif" style="font-size:28px;font-weight:700;color:var(--navy);line-height:1.2;">Lean<br>× AI</div>
+                        <div style="font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-top:8px;">
+                            <span class="en">The unique niche</span><span class="pl">Unikalna nisza</span>
+                        </div>
+                    </div>
+                    <div class="stat-block" style="border-color:var(--navy);">
+                        <div class="font-serif" style="font-size:28px;font-weight:700;color:var(--navy);line-height:1.2;">White<br>Collar</div>
+                        <div style="font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-top:8px;">
+                            <span class="en">Specialist focus</span><span class="pl">Specjalizacja</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-top:1px solid var(--border);padding-top:32px;">
+                    <div style="font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:12px;">
+                        <span class="en">Worked with</span><span class="pl">Doświadczenie</span>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                        <span style="font-size:13px;font-weight:500;color:var(--navy);background:var(--white);border:1px solid var(--border);padding:5px 14px;">Philips</span>
+                        <span style="font-size:13px;font-weight:500;color:var(--navy);background:var(--white);border:1px solid var(--border);padding:5px 14px;">Signify</span>
+                        <span style="font-size:13px;font-weight:500;color:var(--navy);background:var(--white);border:1px solid var(--border);padding:5px 14px;">Electrolux</span>
+                        <span style="font-size:13px;font-weight:500;color:var(--navy);background:var(--white);border:1px solid var(--border);padding:5px 14px;">Sonova</span>
+                        <span style="font-size:13px;font-weight:500;color:var(--navy);background:var(--white);border:1px solid var(--border);padding:5px 14px;">Sennheiser</span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-            </svg>
+    <!-- Featured insights strip -->
+    <section style="background:var(--navy);padding:40px;">
+        <div style="max-width:1200px;margin:0 auto;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;">
+                <span style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);">
+                    <span class="en">Key Perspectives</span><span class="pl">Kluczowe perspektywy</span>
+                </span>
+                <a href="#approach" style="font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;">
+                    <span class="en">Explore approach →</span><span class="pl">Poznaj podejście →</span>
+                </a>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1);">
+                <div style="background:var(--navy);padding:24px 28px;">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">
+                        <span class="en">Root cause</span><span class="pl">Przyczyna</span>
+                    </div>
+                    <p style="font-family:'Playfair Display',serif;font-size:17px;line-height:1.4;color:#fff;">
+                        <span class="en">Everyone is busy. Nobody is delivering.</span>
+                        <span class="pl">Wszyscy są zajęci. Nikt nie dostarcza.</span>
+                    </p>
+                </div>
+                <div style="background:var(--navy);padding:24px 28px;">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">
+                        <span class="en">The gap</span><span class="pl">Luka</span>
+                    </div>
+                    <p style="font-family:'Playfair Display',serif;font-size:17px;line-height:1.4;color:#fff;">
+                        <span class="en">Resource efficiency ≠ flow efficiency.</span>
+                        <span class="pl">Resource efficiency ≠ flow efficiency.</span>
+                    </p>
+                </div>
+                <div style="background:var(--navy);padding:24px 28px;">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">
+                        <span class="en">The lever</span><span class="pl">Dźwignia</span>
+                    </div>
+                    <p style="font-family:'Playfair Display',serif;font-size:17px;line-height:1.4;color:#fff;">
+                        <span class="en">Fix the process. Then deploy AI where it holds the gain.</span>
+                        <span class="pl">Napraw proces. Potem wdrażaj AI tam, gdzie utrzyma efekt.</span>
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About -->
-    <section id="about" class="py-32 px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-24 items-center">
+    <section id="about" style="padding:96px 40px;background:var(--white);">
+        <div style="max-width:1200px;margin:0 auto;">
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start;">
                 <div>
-                    <div class="section-label">
-                        <span class="en">About</span><span class="pl">O mnie</span>
-                    </div>
-                    <h2 class="font-serif text-4xl font-bold mb-8">
+                    <span class="eyebrow"><span class="en">About</span><span class="pl">O mnie</span></span>
+                    <h2 class="font-serif fade-in" style="font-size:42px;font-weight:700;color:var(--navy);margin-bottom:32px;line-height:1.2;">
                         <span class="en">Miko J. Banas</span>
                         <span class="pl">Mikołaj Jerzy Banaś</span>
                     </h2>
-                    <div class="space-y-5 text-white/70 leading-relaxed">
-                        <p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:40px;">
+                        <p style="font-size:15px;color:var(--text-mid);line-height:1.7;">
                             <span class="en">For 8 years I have been running Kaizen events and operational sprints inside some of Europe's largest organizations — Philips, Signify, Electrolux, Sonova and Sennheiser.</span>
                             <span class="pl">Od 8 lat prowadzę Kaizen eventy i sprinty operacyjne w największych europejskich organizacjach — Philips, Signify, Electrolux, Sonova i Sennheiser.</span>
                         </p>
-                        <p>
-                            <span class="en">My focus is on white collar environments — offices, planning functions, cross-functional teams — where Lean and Continuous Improvement remain largely unexplored territory, despite being where the biggest inefficiencies actually hide.</span>
-                            <span class="pl">Specjalizuję się w środowiskach white collar — biurach, funkcjach planowania, zespołach cross-funkcyjnych — gdzie Lean i Continuous Improvement pozostają w dużej mierze nieodkrytym terenem, mimo że to właśnie tam kryją się największe nieefektywności.</span>
-                        </p>
-                        <p>
-                            <span class="en">My approach is built on a simple truth: process improvements only stick when the people executing them believe in them. That's why I put change management and the human factor at the centre of every engagement.</span>
-                            <span class="pl">Moje podejście opiera się na prostej prawdzie: zmiany procesowe działają tylko wtedy, gdy wierzą w nie ludzie, którzy je wdrażają. Dlatego change management i czynnik ludzki stawiam w centrum każdego projektu.</span>
+                        <p style="font-size:15px;color:var(--text-mid);line-height:1.7;">
+                            <span class="en">My focus is on white collar environments — offices, planning functions, cross-functional teams — where Lean and Continuous Improvement remain largely unexplored territory.</span>
+                            <span class="pl">Specjalizuję się w środowiskach white collar — biurach, funkcjach planowania, zespołach cross-funkcyjnych — gdzie Lean i Continuous Improvement pozostają w dużej mierze nieodkrytym terenem.</span>
                         </p>
                     </div>
-                    <div class="mt-10 flex gap-4">
+                    <div class="pullquote fade-in">
+                        <p>
+                            <span class="en">"Process improvements only stick when the people executing them believe in them."</span>
+                            <span class="pl">"Zmiany procesowe działają tylko wtedy, gdy wierzą w nie ludzie, którzy je wdrażają."</span>
+                        </p>
+                        <cite><span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span></cite>
+                    </div>
+                    <div style="margin-top:36px;">
                         <a href="#contact" class="btn-primary">
                             <span class="en">Get in Touch</span><span class="pl">Napisz do mnie</span>
                         </a>
                     </div>
                 </div>
-
-                <div class="space-y-4">
-                    <div class="flex justify-center mb-6">
-                        <div style="width:192px;height:192px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);background-image:url('photo.jpg');background-size:cover;background-position:center 25%;filter:grayscale(1);"></div>
+                <div>
+                    <div style="width:100%;aspect-ratio:3/4;background:var(--light);display:flex;align-items:center;justify-content:center;margin-bottom:24px;overflow:hidden;">
+                        <img src="photo.jpg" alt="Miko J. Banas" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:grayscale(1);">
                     </div>
-                    <div class="highlight-box">
-                        <div class="text-xs tracking-widest uppercase text-white/40 mb-2">
-                            <span class="en">Worked with</span><span class="pl">Doświadczenie</span>
-                        </div>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Philips</span>
-                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Signify</span>
-                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Electrolux</span>
-                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Sonova</span>
-                            <span class="text-sm text-white/80 border border-white/15 px-3 py-1 rounded-sm">Sennheiser</span>
-                        </div>
-                    </div>
-                    <div class="highlight-box">
-                        <div class="text-xs tracking-widest uppercase text-white/40 mb-2">
+                    <div style="border-top:3px solid var(--navy);padding-top:20px;">
+                        <div style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:10px;">
                             <span class="en">Focus area</span><span class="pl">Specjalizacja</span>
                         </div>
-                        <p class="text-white/70 text-sm">
-                            <span class="en">White collar Lean — planning, cross-functional flow, office operations</span>
-                            <span class="pl">White collar Lean — planowanie, przepływ cross-funkcyjny, operacje biurowe</span>
-                        </p>
-                    </div>
-                    <div class="highlight-box">
-                        <div class="text-xs tracking-widest uppercase text-white/40 mb-2">
-                            <span class="en">Method</span><span class="pl">Metoda</span>
-                        </div>
-                        <p class="text-white/70 text-sm">
-                            <span class="en">Human-centric change management — teams find and own their own solutions</span>
-                            <span class="pl">Human-centric change management — zespoły same znajdują i są właścicielami rozwiązań</span>
+                        <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">
+                            <span class="en">White collar Lean — planning, cross-functional flow, office operations, AI integration</span>
+                            <span class="pl">White collar Lean — planowanie, przepływ cross-funkcyjny, operacje biurowe, integracja AI</span>
                         </p>
                     </div>
                 </div>
@@ -378,446 +515,419 @@
     </section>
 
     <!-- Approach -->
-    <section id="approach" class="py-32 px-8 bg-rich-black">
-        <div class="max-w-6xl mx-auto">
-            <div class="section-label text-center">
-                <span class="en">The combination nobody else offers</span><span class="pl">Połączenie którego nikt inny nie oferuje</span>
+    <section id="approach" style="padding:96px 40px;background:var(--light);">
+        <div style="max-width:1200px;margin:0 auto;">
+            <span class="eyebrow"><span class="en">The combination nobody else offers</span><span class="pl">Połączenie którego nikt inny nie oferuje</span></span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:64px;">
+                <h2 class="font-serif fade-in" style="font-size:42px;font-weight:700;color:var(--navy);line-height:1.2;">
+                    <span class="en">Lean cleans the process.<br>AI holds the gain.</span>
+                    <span class="pl">Lean czyści proces.<br>AI utrzymuje efekt.</span>
+                </h2>
+                <p style="font-size:15px;color:var(--text-mid);line-height:1.7;padding-top:8px;">
+                    <span class="en">Most organisations implement AI on top of broken processes — and wonder why it doesn't work. Most Lean programmes fix the process but leave the manual work in place. The real leverage is doing both: fix the flow first, then let AI agents hold it and free your people from the work that shouldn't require a human.</span>
+                    <span class="pl">Większość organizacji wdraża AI na zepsutych procesach — i zastanawia się dlaczego nie działa. Większość programów Lean naprawia proces ale zostawia manualną pracę na miejscu. Prawdziwa dźwignia to robienie obu naraz: najpierw napraw przepływ, potem niech agenty AI go utrzymają.</span>
+                </p>
             </div>
-            <h2 class="font-serif text-4xl font-bold text-center mb-6">
-                <span class="en">Lean cleans the process.<br>AI holds the gain.</span>
-                <span class="pl">Lean czyści proces.<br>AI utrzymuje efekt.</span>
-            </h2>
-            <p class="text-white/50 text-center max-w-2xl mx-auto mb-20 leading-relaxed">
-                <span class="en">Most organisations implement AI on top of broken processes — and wonder why it doesn't work. Most Lean programmes fix the process but leave the manual work in place. The real leverage is doing both: fix the flow first, then let AI agents hold it and free your people from the work that shouldn't require a human.</span>
-                <span class="pl">Większość organizacji wdraża AI na zepsutych procesach — i zastanawia się dlaczego nie działa. Większość programów Lean naprawia proces ale zostawia manualną pracę na miejscu. Prawdziwa dźwignia to robienie obu naraz: najpierw napraw przepływ, potem niech agenty AI go utrzymają i uwolnią Twoich ludzi od pracy która nie powinna wymagać człowieka.</span>
-            </p>
 
-            <div class="grid md:grid-cols-3 gap-6 mb-16">
-                <div class="card text-center">
-                    <div class="text-3xl font-serif font-bold mb-3 text-white/30">01</div>
-                    <h3 class="font-semibold mb-3 text-sm tracking-wide uppercase">
+            <!-- 3 problems -->
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:64px;background:var(--border);">
+                <div style="background:var(--white);padding:36px 28px;">
+                    <div style="font-size:42px;font-weight:700;color:var(--border);font-family:'Playfair Display',serif;margin-bottom:16px;">01</div>
+                    <h3 style="font-size:14px;font-weight:600;letter-spacing:0.5px;color:var(--navy);margin-bottom:12px;">
                         <span class="en">Silo Setup</span><span class="pl">Silosy</span>
                     </h3>
-                    <p class="text-white/50 text-sm leading-relaxed">
+                    <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">
                         <span class="en">Departments optimise locally. Incentives are set at function level. Cross-functional flow is nobody's job.</span>
                         <span class="pl">Departamenty optymalizują lokalnie. Incentives ustawione na poziomie funkcji. Przepływ cross-funkcyjny nie należy do nikogo.</span>
                     </p>
                 </div>
-                <div class="card text-center">
-                    <div class="text-3xl font-serif font-bold mb-3 text-white/30">02</div>
-                    <h3 class="font-semibold mb-3 text-sm tracking-wide uppercase">
+                <div style="background:var(--white);padding:36px 28px;">
+                    <div style="font-size:42px;font-weight:700;color:var(--border);font-family:'Playfair Display',serif;margin-bottom:16px;">02</div>
+                    <h3 style="font-size:14px;font-weight:600;letter-spacing:0.5px;color:var(--navy);margin-bottom:12px;">
                         <span class="en">100%+ Utilisation</span><span class="pl">Ponad 100% utilizacji</span>
                     </h3>
-                    <p class="text-white/50 text-sm leading-relaxed">
+                    <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">
                         <span class="en">Everyone is busy. Resources are fully loaded. Yet delivery is slow, quality suffers and priorities constantly shift.</span>
-                        <span class="pl">Wszyscy są zajęci. Zasoby w pełni obciążone. A mimo to dostarczanie jest wolne, jakość cierpi, a priorytety ciągle się zmieniają.</span>
+                        <span class="pl">Wszyscy są zajęci. Zasoby w pełni obciążone. A mimo to dostarczanie jest wolne, jakość cierpi i priorytety ciągle się zmieniają.</span>
                     </p>
                 </div>
-                <div class="card text-center">
-                    <div class="text-3xl font-serif font-bold mb-3 text-white/30">03</div>
-                    <h3 class="font-semibold mb-3 text-sm tracking-wide uppercase">
+                <div style="background:var(--white);padding:36px 28px;">
+                    <div style="font-size:42px;font-weight:700;color:var(--border);font-family:'Playfair Display',serif;margin-bottom:16px;">03</div>
+                    <h3 style="font-size:14px;font-weight:600;letter-spacing:0.5px;color:var(--navy);margin-bottom:12px;">
                         <span class="en">Flow Suffers</span><span class="pl">Flow cierpi</span>
                     </h3>
-                    <p class="text-white/50 text-sm leading-relaxed">
+                    <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">
                         <span class="en">Work sits waiting. Handovers create friction. The organisation is resource efficient but not flow efficient.</span>
                         <span class="pl">Praca czeka w kolejkach. Przekazania generują tarcia. Organizacja jest resource efficient, ale nie flow efficient.</span>
                     </p>
                 </div>
             </div>
 
-            <div class="highlight-box max-w-3xl mx-auto text-center mb-12">
-                <p class="text-lg font-light leading-relaxed">
-                    <span class="en">"I work with teams until they understand the system, identify the waste themselves and — crucially — believe in the solution enough to sustain it."</span>
-                    <span class="pl">"Pracuję z zespołami dopóki nie zrozumieją systemu, same nie zidentyfikują marnotrawstwa i — co kluczowe — nie uwierzą w rozwiązanie na tyle, żeby je utrzymać."</span>
-                </p>
-                <div class="text-xs text-white/30 tracking-widest uppercase mt-4"><span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span></div>
-            </div>
-
-            <!-- Perform / Transform framework -->
-            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                <div class="card text-center">
-                    <div class="text-xs tracking-widest uppercase text-white/30 mb-3">
-                        <span class="en">Perform</span><span class="pl">Perform</span>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3">BAU</h3>
-                    <p class="text-white/50 text-sm leading-relaxed">
+            <!-- Perform / Transform -->
+            <hr class="divider" style="margin-bottom:48px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                <div class="card-navy">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Perform</div>
+                    <h3 class="font-serif" style="font-size:28px;color:#fff;margin-bottom:12px;">BAU</h3>
+                    <p style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">
                         <span class="en">Business as usual. The work your organisation must do today. Managed for throughput and reliability.</span>
                         <span class="pl">Bieżąca działalność. Praca którą organizacja musi wykonywać dziś. Zarządzana pod przepustowość i niezawodność.</span>
                     </p>
                 </div>
-                <div class="card text-center">
-                    <div class="text-xs tracking-widest uppercase text-white/30 mb-3">
-                        <span class="en">Transform</span><span class="pl">Transform</span>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3">Change</h3>
-                    <p class="text-white/50 text-sm leading-relaxed">
+                <div class="card" style="border-color:var(--navy);border-width:2px;">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:16px;">Transform</div>
+                    <h3 class="font-serif" style="font-size:28px;color:var(--navy);margin-bottom:12px;">Change</h3>
+                    <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">
                         <span class="en">Deliberate improvement. The work that changes how the organisation operates. Protected capacity, real ownership.</span>
                         <span class="pl">Celowe usprawnianie. Praca która zmienia sposób działania organizacji. Chroniona przepustowość, realna odpowiedzialność.</span>
                     </p>
                 </div>
             </div>
-            <p class="text-center text-white/30 text-xs tracking-widest uppercase mt-6">
-                <span class="en">Perform / Transform — a framework for managing two speeds simultaneously</span>
-                <span class="pl">Perform / Transform — framework do zarządzania dwoma prędkościami jednocześnie</span>
+            <p style="text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-top:20px;">
+                <span class="en">Perform / Transform — managing two speeds simultaneously</span>
+                <span class="pl">Perform / Transform — zarządzanie dwoma prędkościami jednocześnie</span>
             </p>
         </div>
     </section>
 
     <!-- Services -->
-    <section id="services" class="py-32 px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="section-label text-center">
-                <span class="en">Services</span><span class="pl">Usługi</span>
+    <section id="services" style="padding:96px 40px;background:var(--white);">
+        <div style="max-width:1200px;margin:0 auto;">
+            <span class="eyebrow"><span class="en">Services</span><span class="pl">Usługi</span></span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:48px;">
+                <h2 class="font-serif fade-in" style="font-size:42px;font-weight:700;color:var(--navy);line-height:1.2;">
+                    <span class="en">What I offer</span><span class="pl">Co oferuję</span>
+                </h2>
+                <p style="font-size:15px;color:var(--text-mid);line-height:1.7;">
+                    <span class="en">Three engagements. One through-line: eliminate waste, integrate AI where it creates real leverage, build capability that stays.</span>
+                    <span class="pl">Trzy formy współpracy. Jedna idea przewodnia: wyeliminuj marnotrawstwo, zintegruj AI tam gdzie tworzy realną dźwignię, zbuduj kompetencje które zostają.</span>
+                </p>
             </div>
-            <h2 class="font-serif text-4xl font-bold text-center mb-6">
-                <span class="en">What I offer</span><span class="pl">Co oferuję</span>
-            </h2>
-            <p class="text-white/50 text-center max-w-xl mx-auto mb-16 text-sm leading-relaxed">
-                <span class="en">Three engagements. One through-line: eliminate waste, integrate AI where it creates real leverage, build capability that stays.</span>
-                <span class="pl">Trzy formy współpracy. Jedna idea przewodnia: wyeliminuj marnotrawstwo, zintegruj AI tam gdzie tworzy realną dźwignię, zbuduj kompetencje które zostają.</span>
-            </p>
+            <hr class="divider">
 
-            <div class="space-y-6">
+            <!-- Service 1 -->
+            <div style="display:grid;grid-template-columns:1fr 3fr auto;gap:40px;align-items:start;padding:40px 0;border-bottom:1px solid var(--border);">
+                <div>
+                    <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:8px;">
+                        <span class="en">Step 1</span><span class="pl">Krok 1</span>
+                    </div>
+                    <div style="font-size:11px;color:var(--text-light);">4–6 <span class="en">weeks</span><span class="pl">tygodni</span></div>
+                </div>
+                <div>
+                    <h3 class="font-serif" style="font-size:28px;font-weight:600;color:var(--navy);margin-bottom:14px;">Discovery Sprint</h3>
+                    <p style="font-size:14px;color:var(--text-mid);line-height:1.7;max-width:600px;">
+                        <span class="en">A structured diagnostic of your organisation's flow and AI readiness. We map where work actually waits, where handovers break down, and where AI agents can take over. You get a clear picture of the problem and a prioritised roadmap — with or without further engagement. Low risk. High signal.</span>
+                        <span class="pl">Strukturyzowana diagnostyka przepływu i gotowości AI w Twojej organizacji. Mapujemy gdzie praca naprawdę czeka, gdzie przekazania się psują i gdzie agenty AI mogą przejąć robotę. Dostajesz jasny obraz problemu i priorytetową mapę drogową. Niskie ryzyko. Wysoki sygnał.</span>
+                    </p>
+                </div>
+                <div style="padding-top:4px;">
+                    <a href="#contact" class="btn-primary">
+                        <span class="en">Start here</span><span class="pl">Zacznij tutaj</span>
+                    </a>
+                </div>
+            </div>
 
-                <!-- 1. Discovery Sprint -->
-                <div class="card border-white/25" style="background: rgba(255,255,255,0.03);">
-                    <div class="flex flex-col md:flex-row md:items-center gap-8">
-                        <div class="md:w-2/3">
-                            <div class="text-xs tracking-widest uppercase text-white/40 mb-3">
-                                <span class="en">Step 1 — Entry point — 4–6 weeks</span><span class="pl">Krok 1 — Punkt wejścia — 4–6 tygodni</span>
-                            </div>
-                            <h3 class="text-2xl font-serif font-bold mb-3">Discovery Sprint</h3>
-                            <p class="text-white/60 text-sm leading-relaxed">
-                                <span class="en">A structured diagnostic of your organisation's flow and AI readiness. We map where work actually waits, where handovers break down, and where AI agents can take over. You get a clear picture of the problem and a prioritised roadmap — with or without further engagement. Low risk. High signal.</span>
-                                <span class="pl">Strukturyzowana diagnostyka przepływu i gotowości AI w Twojej organizacji. Mapujemy gdzie praca naprawdę czeka, gdzie przekazania się psują i gdzie agenty AI mogą przejąć robotę. Dostajesz jasny obraz problemu i priorytetową mapę drogową — niezależnie od dalszej współpracy. Niskie ryzyko. Wysoki sygnał.</span>
-                            </p>
-                        </div>
-                        <div class="md:w-1/3 md:text-right">
-                            <a href="#contact" class="btn-outline inline-block">
-                                <span class="en">Start here</span><span class="pl">Zacznij tutaj</span>
-                            </a>
-                        </div>
+            <!-- Service 2 -->
+            <div style="display:grid;grid-template-columns:1fr 3fr auto;gap:40px;align-items:start;padding:40px 0;border-bottom:1px solid var(--border);">
+                <div>
+                    <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:8px;">
+                        <span class="en">Step 2</span><span class="pl">Krok 2</span>
+                    </div>
+                    <div style="font-size:11px;color:var(--text-light);">
+                        <span class="en">Tailor made</span><span class="pl">Tailor made</span>
                     </div>
                 </div>
-
-                <!-- 2. Flow Transformation -->
-                <div class="card">
-                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
-                        <span class="en">Step 2 — Core programme — tailor made</span><span class="pl">Krok 2 — Program główny — tailor made</span>
-                    </div>
-                    <h3 class="text-2xl font-serif font-bold mb-3">
+                <div>
+                    <h3 class="font-serif" style="font-size:28px;font-weight:600;color:var(--navy);margin-bottom:14px;">
                         <span class="en">Flow Transformation</span><span class="pl">Flow Transformation</span>
                     </h3>
-                    <p class="text-white/55 text-sm leading-relaxed mb-5">
-                        <span class="en">A full Lean white collar programme — Kaizen events, Daily Management, cross-functional flow design, change management. Teams identify the waste themselves, build the solution themselves and — crucially — own it. Results stick because people believe in them.</span>
-                        <span class="pl">Pełny program Lean white collar — Kaizen eventy, Daily Management, projektowanie przepływu cross-funkcyjnego, change management. Zespoły same identyfikują marnotrawstwo, same budują rozwiązanie i — co kluczowe — są jego właścicielem. Wyniki zostają bo ludzie w nie wierzą.</span>
+                    <p style="font-size:14px;color:var(--text-mid);line-height:1.7;max-width:600px;">
+                        <span class="en">A full Lean white collar programme — Kaizen events, Daily Management, cross-functional flow design, change management. Teams identify the waste themselves, build the solution themselves and — crucially — own it.</span>
+                        <span class="pl">Pełny program Lean white collar — Kaizen eventy, Daily Management, projektowanie przepływu cross-funkcyjnego, change management. Zespoły same identyfikują marnotrawstwo, same budują rozwiązanie i — co kluczowe — są jego właścicielem.</span>
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-white/40 border border-white/10 px-3 py-1 rounded-sm">Kaizen</span>
-                        <span class="text-xs text-white/40 border border-white/10 px-3 py-1 rounded-sm">Daily Management</span>
-                        <span class="text-xs text-white/40 border border-white/10 px-3 py-1 rounded-sm">Workshop Facilitation</span>
-                        <span class="text-xs text-white/40 border border-white/10 px-3 py-1 rounded-sm">Problem Solving</span>
-                        <span class="text-xs text-white/40 border border-white/10 px-3 py-1 rounded-sm">Leadership Training</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
+                        <span style="font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--navy);background:var(--blue-light);padding:4px 12px;">Kaizen</span>
+                        <span style="font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--navy);background:var(--blue-light);padding:4px 12px;">Daily Management</span>
+                        <span style="font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--navy);background:var(--blue-light);padding:4px 12px;">Workshop Facilitation</span>
+                        <span style="font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--navy);background:var(--blue-light);padding:4px 12px;">Problem Solving</span>
+                        <span style="font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--navy);background:var(--blue-light);padding:4px 12px;">Leadership Training</span>
                     </div>
                 </div>
+                <div style="padding-top:4px;">
+                    <a href="#contact" class="btn-outline">
+                        <span class="en">Learn more</span><span class="pl">Dowiedz się więcej</span>
+                    </a>
+                </div>
+            </div>
 
-                <!-- 3. AI Integration -->
-                <div class="card">
-                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
-                        <span class="en">Step 3 — AI layer — where flow analysis shows leverage</span><span class="pl">Krok 3 — Warstwa AI — tam gdzie analiza flow pokazuje dźwignię</span>
+            <!-- Service 3 -->
+            <div style="display:grid;grid-template-columns:1fr 3fr auto;gap:40px;align-items:start;padding:40px 0;border-bottom:1px solid var(--border);">
+                <div>
+                    <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:8px;">
+                        <span class="en">Step 3</span><span class="pl">Krok 3</span>
                     </div>
-                    <h3 class="text-2xl font-serif font-bold mb-3">
+                    <div style="font-size:11px;color:var(--text-light);">
+                        <span class="en">AI layer</span><span class="pl">Warstwa AI</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-serif" style="font-size:28px;font-weight:600;color:var(--navy);margin-bottom:14px;">
                         <span class="en">AI Integration</span><span class="pl">Integracja AI</span>
                     </h3>
-                    <p class="text-white/55 text-sm leading-relaxed">
+                    <p style="font-size:14px;color:var(--text-mid);line-height:1.7;max-width:600px;">
                         <span class="en">Once the flow is mapped, we know exactly where autonomous AI agents create the most leverage — back office operations, management calendar coordination, planning cycles, reporting. Not AI on top of broken processes. AI where the process is already clean.</span>
                         <span class="pl">Kiedy przepływ jest zmapowany, wiemy dokładnie gdzie autonomiczne agenty AI tworzą największą dźwignię — operacje back office, koordynacja kalendarzy zarządu, cykle planowania, raportowanie. Nie AI na zepsutych procesach. AI tam gdzie proces jest już czysty.</span>
                     </p>
                 </div>
-
+                <div style="padding-top:4px;">
+                    <a href="#contact" class="btn-outline">
+                        <span class="en">Learn more</span><span class="pl">Dowiedz się więcej</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Work / Realizations -->
-    <section id="work" class="py-32 px-8 bg-rich-black">
-        <div class="max-w-6xl mx-auto">
-            <div class="section-label text-center">
-                <span class="en">Work</span><span class="pl">Realizacje</span>
+    <!-- Work -->
+    <section id="work" style="padding:96px 40px;background:var(--light);">
+        <div style="max-width:1200px;margin:0 auto;">
+            <span class="eyebrow"><span class="en">Work</span><span class="pl">Realizacje</span></span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:48px;">
+                <h2 class="font-serif fade-in" style="font-size:42px;font-weight:700;color:var(--navy);line-height:1.2;">
+                    <span class="en">Selected engagements</span><span class="pl">Wybrane projekty</span>
+                </h2>
+                <p style="font-size:15px;color:var(--text-mid);line-height:1.7;">
+                    <span class="en">Real implementations inside global organisations.</span>
+                    <span class="pl">Realne wdrożenia wewnątrz globalnych organizacji.</span>
+                </p>
             </div>
-            <h2 class="font-serif text-4xl font-bold text-center mb-6">
-                <span class="en">Selected engagements</span><span class="pl">Wybrane projekty</span>
-            </h2>
-            <p class="text-white/50 text-center max-w-xl mx-auto mb-16 text-sm">
-                <span class="en">Real implementations inside global organisations.</span>
-                <span class="pl">Realne wdrożenia wewnątrz globalnych organizacji.</span>
-            </p>
 
-            <div class="space-y-4">
-
-                <div class="card flex flex-col md:flex-row md:items-start gap-6">
-                    <div class="md:w-36 shrink-0">
-                        <div class="text-white font-semibold tracking-wide">Philips</div>
-                        <div class="text-xs text-white/30 mt-1">Global</div>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="font-medium mb-2">
-                            <span class="en">Daily Management System — 3-level implementation</span>
-                            <span class="pl">System Daily Management — wdrożenie na 3 poziomach</span>
-                        </h3>
-                        <p class="text-white/50 text-sm leading-relaxed mb-4">
-                            <span class="en">Design and implementation of a complete Daily Management system spanning three levels of the organisation — from shop floor to senior leadership.</span>
-                            <span class="pl">Zaprojektowanie i wdrożenie kompletnego systemu Daily Management obejmującego trzy poziomy organizacji — od poziomu operacyjnego do wyższej kadry zarządzającej.</span>
-                        </p>
-                        <div class="text-xs text-white/25 tracking-widest uppercase">
-                            <span class="en">Results available on request</span><span class="pl">Wyniki dostępne na żądanie</span>
-                        </div>
-                    </div>
+            <div class="case-row">
+                <div class="case-label">
+                    <div class="company">Philips</div>
+                    <div class="region">Global</div>
                 </div>
-
-                <div class="card flex flex-col md:flex-row md:items-start gap-6">
-                    <div class="md:w-36 shrink-0">
-                        <div class="text-white font-semibold tracking-wide">Electrolux</div>
-                        <div class="text-xs text-white/30 mt-1">CEE Region</div>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="font-medium mb-2">
-                            <span class="en">Daily Management programme + Demand Planning Accuracy (DPA)</span>
-                            <span class="pl">Program Daily Management + poprawa DPA (Demand Planning Accuracy)</span>
-                        </h3>
-                        <p class="text-white/50 text-sm leading-relaxed mb-4">
-                            <span class="en">Full Daily Management programme rollout combined with targeted work on demand planning accuracy across the CEE market — directly with the sales organisations responsible for forecasting.</span>
-                            <span class="pl">Pełne wdrożenie programu Daily Management połączone z dedykowaną pracą nad dokładnością planowania popytu na rynku CEE — bezpośrednio z organizacjami sprzedażowymi odpowiedzialnymi za prognozowanie.</span>
-                        </p>
-                        <div class="text-xs text-white/25 tracking-widest uppercase">
-                            <span class="en">Results available on request</span><span class="pl">Wyniki dostępne na żądanie</span>
-                        </div>
-                    </div>
+                <div style="flex:1;">
+                    <h3 style="font-size:16px;font-weight:600;color:var(--navy);margin-bottom:10px;">
+                        <span class="en">Daily Management System — 3-level implementation</span>
+                        <span class="pl">System Daily Management — wdrożenie na 3 poziomach</span>
+                    </h3>
+                    <p style="font-size:13px;color:var(--text-mid);line-height:1.7;">
+                        <span class="en">Design and implementation of a complete Daily Management system spanning three levels of the organisation — from shop floor to senior leadership.</span>
+                        <span class="pl">Zaprojektowanie i wdrożenie kompletnego systemu Daily Management obejmującego trzy poziomy organizacji — od poziomu operacyjnego do wyższej kadry zarządzającej.</span>
+                    </p>
                 </div>
-
-                <div class="card flex flex-col md:flex-row md:items-start gap-6">
-                    <div class="md:w-36 shrink-0">
-                        <div class="text-white font-semibold tracking-wide">Sennheiser</div>
-                        <div class="text-xs text-white/30 mt-1">Global</div>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="font-medium mb-2">
-                            <span class="en">SIOP & S&OP implementation — global scope</span>
-                            <span class="pl">Implementacja SIOP i S&OP — zasięg globalny</span>
-                        </h3>
-                        <p class="text-white/50 text-sm leading-relaxed mb-4">
-                            <span class="en">Implementation of SIOP and S&OP processes at global level, working directly with international sales organisations responsible for planning and demand management.</span>
-                            <span class="pl">Implementacja procesów SIOP i S&OP na poziomie globalnym, praca bezpośrednio z międzynarodowymi organizacjami sprzedażowymi odpowiedzialnymi za planowanie i zarządzanie popytem.</span>
-                        </p>
-                        <div class="text-xs text-white/25 tracking-widest uppercase">
-                            <span class="en">Results available on request</span><span class="pl">Wyniki dostępne na żądanie</span>
-                        </div>
-                    </div>
+                <div style="min-width:160px;text-align:right;">
+                    <span style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);">
+                        <span class="en">Results on request</span><span class="pl">Wyniki na żądanie</span>
+                    </span>
                 </div>
+            </div>
 
-                <div class="card flex flex-col md:flex-row md:items-start gap-6 opacity-60">
-                    <div class="md:w-36 shrink-0">
-                        <div class="text-white font-semibold tracking-wide">Signify</div>
-                        <div class="text-xs text-white/30 mt-1">—</div>
-                    </div>
-                    <div>
-                        <p class="text-white/40 text-sm italic">
-                            <span class="en">Details coming soon.</span>
-                            <span class="pl">Szczegóły wkrótce.</span>
-                        </p>
-                    </div>
+            <div class="case-row">
+                <div class="case-label">
+                    <div class="company">Electrolux</div>
+                    <div class="region">CEE Region</div>
                 </div>
-
-                <div class="card flex flex-col md:flex-row md:items-start gap-6 opacity-60">
-                    <div class="md:w-36 shrink-0">
-                        <div class="text-white font-semibold tracking-wide">Sonova</div>
-                        <div class="text-xs text-white/30 mt-1">—</div>
-                    </div>
-                    <div>
-                        <p class="text-white/40 text-sm italic">
-                            <span class="en">Details coming soon.</span>
-                            <span class="pl">Szczegóły wkrótce.</span>
-                        </p>
-                    </div>
+                <div style="flex:1;">
+                    <h3 style="font-size:16px;font-weight:600;color:var(--navy);margin-bottom:10px;">
+                        <span class="en">Daily Management programme + Demand Planning Accuracy (DPA)</span>
+                        <span class="pl">Program Daily Management + poprawa DPA</span>
+                    </h3>
+                    <p style="font-size:13px;color:var(--text-mid);line-height:1.7;">
+                        <span class="en">Full Daily Management programme rollout combined with targeted work on demand planning accuracy across the CEE market — directly with the sales organisations responsible for forecasting.</span>
+                        <span class="pl">Pełne wdrożenie programu Daily Management połączone z dedykowaną pracą nad dokładnością planowania popytu na rynku CEE — bezpośrednio z organizacjami sprzedażowymi odpowiedzialnymi za prognozowanie.</span>
+                    </p>
                 </div>
+                <div style="min-width:160px;text-align:right;">
+                    <span style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);">
+                        <span class="en">Results on request</span><span class="pl">Wyniki na żądanie</span>
+                    </span>
+                </div>
+            </div>
 
+            <div class="case-row">
+                <div class="case-label">
+                    <div class="company">Sennheiser</div>
+                    <div class="region">Global</div>
+                </div>
+                <div style="flex:1;">
+                    <h3 style="font-size:16px;font-weight:600;color:var(--navy);margin-bottom:10px;">
+                        <span class="en">SIOP & S&OP implementation — global scope</span>
+                        <span class="pl">Implementacja SIOP i S&OP — zasięg globalny</span>
+                    </h3>
+                    <p style="font-size:13px;color:var(--text-mid);line-height:1.7;">
+                        <span class="en">Implementation of SIOP and S&OP processes at global level, working directly with international sales organisations responsible for planning and demand management.</span>
+                        <span class="pl">Implementacja procesów SIOP i S&OP na poziomie globalnym, praca bezpośrednio z międzynarodowymi organizacjami sprzedażowymi odpowiedzialnymi za planowanie i zarządzanie popytem.</span>
+                    </p>
+                </div>
+                <div style="min-width:160px;text-align:right;">
+                    <span style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);">
+                        <span class="en">Results on request</span><span class="pl">Wyniki na żądanie</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="case-row" style="opacity:0.5;">
+                <div class="case-label">
+                    <div class="company">Signify</div>
+                </div>
+                <div>
+                    <p style="font-size:13px;color:var(--text-mid);font-style:italic;">
+                        <span class="en">Details coming soon.</span><span class="pl">Szczegóły wkrótce.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="case-row" style="opacity:0.5;">
+                <div class="case-label">
+                    <div class="company">Sonova</div>
+                </div>
+                <div>
+                    <p style="font-size:13px;color:var(--text-mid);font-style:italic;">
+                        <span class="en">Details coming soon.</span><span class="pl">Szczegóły wkrótce.</span>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Team / Ecosystem -->
-    <section id="team" class="py-32 px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="section-label text-center">
-                <span class="en">Team</span><span class="pl">Zespół</span>
+    <!-- Team -->
+    <section id="team" style="padding:96px 40px;background:var(--white);">
+        <div style="max-width:1200px;margin:0 auto;">
+            <span class="eyebrow"><span class="en">Team</span><span class="pl">Zespół</span></span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:48px;">
+                <h2 class="font-serif fade-in" style="font-size:42px;font-weight:700;color:var(--navy);line-height:1.2;">
+                    <span class="en">You're not hiring a freelancer</span>
+                    <span class="pl">Nie zatrudniasz freelancera</span>
+                </h2>
+                <div>
+                    <p style="font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:16px;">
+                        <span class="en">Behind every engagement is a network of practitioners who are still actively working inside global organisations.</span>
+                        <span class="pl">Za każdym projektem stoi sieć praktyków, którzy nadal aktywnie pracują wewnątrz globalnych organizacji.</span>
+                    </p>
+                    <p style="font-size:13px;color:var(--text-light);line-height:1.7;">
+                        <span class="en">Every programme includes documented methodology, internal knowledge transfer and a structured handover — so results are owned by your organisation, not dependent on any single person.</span>
+                        <span class="pl">Każdy program obejmuje udokumentowaną metodologię, transfer wiedzy do wewnątrz i strukturyzowane zakończenie — żeby wyniki należały do Twojej organizacji.</span>
+                    </p>
+                </div>
             </div>
-            <h2 class="font-serif text-4xl font-bold text-center mb-6">
-                <span class="en">You're not hiring a freelancer</span>
-                <span class="pl">Nie zatrudniasz freelancera</span>
-            </h2>
-            <p class="text-white/50 text-center max-w-2xl mx-auto mb-6 leading-relaxed text-sm">
-                <span class="en">Behind every engagement is a network of practitioners who are still actively working inside global organisations — bringing you what works right now, not what worked ten years ago.</span>
-                <span class="pl">Za każdym projektem stoi sieć praktyków, którzy nadal aktywnie pracują wewnątrz globalnych organizacji — dostarczając Ci to, co działa teraz, nie to, co działało dziesięć lat temu.</span>
-            </p>
-            <p class="text-white/35 text-center max-w-xl mx-auto mb-16 text-xs leading-relaxed">
-                <span class="en">Every programme includes documented methodology, internal knowledge transfer and a structured handover — so results are owned by your organisation, not dependent on any single person.</span>
-                <span class="pl">Każdy program obejmuje udokumentowaną metodologię, transfer wiedzy do wewnątrz i strukturyzowane zakończenie — żeby wyniki należały do Twojej organizacji, a nie były zależne od jednej osoby.</span>
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-6">
-
-                <div class="card">
-                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+            <hr class="divider" style="margin-bottom:48px;">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+                <div class="card fade-in">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:16px;">
                         <span class="en">Lead consultant</span><span class="pl">Lead consultant</span>
                     </div>
-                    <h3 class="text-xl font-semibold mb-1"><span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span></h3>
-                    <p class="text-white/40 text-xs tracking-wide mb-4">
-                        <span class="en">White Collar Lean & Flow | Change Management</span>
-                        <span class="pl">White Collar Lean & Flow | Change Management</span>
+                    <h3 style="font-size:18px;font-weight:600;color:var(--navy);margin-bottom:4px;">
+                        <span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span>
+                    </h3>
+                    <p style="font-size:12px;color:var(--blue);margin-bottom:16px;">
+                        White Collar Lean & Flow | Change Management
                     </p>
-                    <p class="text-white/55 text-sm leading-relaxed">
-                        <span class="en">8 years running Kaizen events and operational sprints in global organisations. Proprietary approach built on human-centric change management and deep awareness of silo-driven constraints.</span>
-                        <span class="pl">8 lat prowadzenia Kaizen eventów i sprintów operacyjnych w globalnych organizacjach. Autorskie podejście zbudowane na human-centric change management i głębokiej świadomości ograniczeń wynikających z silosów.</span>
+                    <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">
+                        <span class="en">8 years running Kaizen events and operational sprints in global organisations. Proprietary approach built on human-centric change management.</span>
+                        <span class="pl">8 lat prowadzenia Kaizen eventów i sprintów operacyjnych w globalnych organizacjach. Autorskie podejście zbudowane na human-centric change management.</span>
                     </p>
                 </div>
-
-                <div class="card">
-                    <div class="text-xs tracking-widest uppercase text-white/30 mb-4">
+                <div class="card fade-in">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:16px;">
                         <span class="en">Technology partner</span><span class="pl">Partner technologiczny</span>
                     </div>
-                    <h3 class="text-xl font-semibold mb-1">mikolajorsztynowicz.pl</h3>
-                    <p class="text-white/40 text-xs tracking-wide mb-4">Power BI | Dashboards | Reporting</p>
-                    <p class="text-white/55 text-sm leading-relaxed">
-                        <span class="en">Specialist in Power BI dashboards and operational reporting. Multiple live implementations across industries. Turns your data into a Daily Management tool.</span>
-                        <span class="pl">Specjalista od dashboardów Power BI i raportowania operacyjnego. Wiele wdrożeń produkcyjnych w różnych branżach. Zamienia Twoje dane w narzędzie Daily Management.</span>
+                    <h3 style="font-size:18px;font-weight:600;color:var(--navy);margin-bottom:4px;">mikolajorsztynowicz.pl</h3>
+                    <p style="font-size:12px;color:var(--blue);margin-bottom:16px;">Power BI | Dashboards | Reporting</p>
+                    <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">
+                        <span class="en">Specialist in Power BI dashboards and operational reporting. Turns your data into a Daily Management tool.</span>
+                        <span class="pl">Specjalista od dashboardów Power BI i raportowania operacyjnego. Zamienia Twoje dane w narzędzie Daily Management.</span>
                     </p>
                 </div>
-
-                <div class="card md:col-span-2">
-                    <div class="text-xs tracking-widest uppercase text-white/30 mb-6">
-                        <span class="en">Expert network — active practitioners, not retired consultants</span>
-                        <span class="pl">Sieć ekspertów — aktywni praktycy, nie emerytowani konsultanci</span>
+                <div class="card fade-in" style="background:var(--light);border-color:transparent;">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:16px;">
+                        <span class="en">Expert network</span><span class="pl">Sieć ekspertów</span>
                     </div>
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div style="display:flex;flex-direction:column;gap:16px;">
                         <div>
-                            <div class="text-sm font-medium mb-1">Lean Masters</div>
-                            <p class="text-white/40 text-xs leading-relaxed">
-                                <span class="en">Still active in global organisations. Access to what's being implemented today.</span>
-                                <span class="pl">Nadal aktywni w globalnych organizacjach. Dostęp do tego, co jest wdrażane dziś.</span>
+                            <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px;">Lean Masters</div>
+                            <p style="font-size:12px;color:var(--text-light);line-height:1.5;">
+                                <span class="en">Still active in global organisations.</span><span class="pl">Nadal aktywni w globalnych organizacjach.</span>
                             </p>
                         </div>
                         <div>
-                            <div class="text-sm font-medium mb-1">Six Sigma Black Belts</div>
-                            <p class="text-white/40 text-xs leading-relaxed">
-                                <span class="en">Deep analytical capability for complex problem-solving engagements.</span>
-                                <span class="pl">Zaawansowane kompetencje analityczne do złożonych projektów problem-solving.</span>
+                            <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px;">Six Sigma Black Belts</div>
+                            <p style="font-size:12px;color:var(--text-light);line-height:1.5;">
+                                <span class="en">Deep analytical capability.</span><span class="pl">Zaawansowane kompetencje analityczne.</span>
                             </p>
                         </div>
                         <div>
-                            <div class="text-sm font-medium mb-1">EY & Alvarez and Marsal</div>
-                            <p class="text-white/40 text-xs leading-relaxed">
-                                <span class="en">Senior consulting experience for large-scale transformation programmes.</span>
-                                <span class="pl">Doświadczenie senior consulting przy dużych programach transformacyjnych.</span>
-                            </p>
-                        </div>
-                        <div>
-                            <div class="text-sm font-medium mb-1">Growth Leaders</div>
-                            <p class="text-white/40 text-xs leading-relaxed">
-                                <span class="en">Scaling, e-commerce and growth operations expertise beyond traditional corporate.</span>
-                                <span class="pl">Ekspertyza w skalowaniu, e-commerce i operacjach wzrostu poza tradycyjną korporacją.</span>
+                            <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px;">EY & Alvarez and Marsal</div>
+                            <p style="font-size:12px;color:var(--text-light);line-height:1.5;">
+                                <span class="en">Senior consulting experience.</span><span class="pl">Doświadczenie senior consulting.</span>
                             </p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Sad Truths -->
-    <section class="py-32 px-8 bg-rich-black">
-        <div class="max-w-4xl mx-auto">
-            <div class="section-label text-center">
+    <!-- Corporate Truths -->
+    <section style="padding:96px 40px;background:var(--navy);">
+        <div style="max-width:1200px;margin:0 auto;">
+            <span class="eyebrow" style="color:rgba(255,255,255,0.5);">
                 <span class="en">Sad but true</span><span class="pl">Smutne ale prawdziwe</span>
+            </span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:48px;">
+                <h2 class="font-serif" style="font-size:42px;font-weight:700;color:#fff;line-height:1.2;">
+                    <span class="en">Corporate truths nobody puts on a slide</span>
+                    <span class="pl">Prawdy o korpo, których nikt nie wrzuca na slajd</span>
+                </h2>
+                <p style="font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;">
+                    <span class="en">If any of these sound familiar, we should talk.</span>
+                    <span class="pl">Jeśli któraś z nich brzmi znajomo — porozmawiajmy.</span>
+                </p>
             </div>
-            <h2 class="font-serif text-4xl font-bold text-center mb-4">
-                <span class="en">Corporate truths nobody puts on a slide</span>
-                <span class="pl">Prawdy o korpo, których nikt nie wrzuca na slajd</span>
-            </h2>
-            <p class="text-white/40 text-center text-sm mb-16">
-                <span class="en">If any of these sound familiar, we should talk.</span>
-                <span class="pl">Jeśli któraś z nich brzmi znajomo — porozmawiajmy.</span>
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-4">
-
-                <div class="card card-quote hover:border-white/30">
-                    <div class="text-3xl font-serif text-white/10 mb-2">"</div>
-                    <p class="text-white/80 leading-relaxed">
-                        <span class="en">Being right isn't enough in corporate. Someone with authority still has to agree you're right.</span>
-                        <span class="pl">W korporacji nie wystarczy mieć rację — rację ktoś jeszcze musi ci przyznać.</span>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,0.1);">
+                <div style="background:var(--navy);padding:32px;border-left:3px solid rgba(255,255,255,0.15);">
+                    <p style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;font-style:italic;">
+                        "<span class="en">Being right isn't enough in corporate. Someone with authority still has to agree you're right.</span><span class="pl">W korporacji nie wystarczy mieć rację — rację ktoś jeszcze musi ci przyznać.</span>"
                     </p>
                 </div>
-
-                <div class="card card-quote hover:border-white/30">
-                    <div class="text-3xl font-serif text-white/10 mb-2">"</div>
-                    <p class="text-white/80 leading-relaxed">
-                        <span class="en">If it's not on a slide, it doesn't exist.</span>
-                        <span class="pl">Czego nie ma na slajdzie, to nie istnieje.</span>
+                <div style="background:var(--navy);padding:32px;border-left:3px solid rgba(255,255,255,0.15);">
+                    <p style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;font-style:italic;">
+                        "<span class="en">If it's not on a slide, it doesn't exist.</span><span class="pl">Czego nie ma na slajdzie, to nie istnieje.</span>"
                     </p>
                 </div>
-
-                <div class="card card-quote hover:border-white/30">
-                    <div class="text-3xl font-serif text-white/10 mb-2">"</div>
-                    <p class="text-white/80 leading-relaxed">
-                        <span class="en">Before you do anything in corporate, think first about how you'll present it.</span>
-                        <span class="pl">W korpo zanim cokolwiek zrobisz, zastanów się najpierw jak to pokażesz.</span>
+                <div style="background:var(--navy);padding:32px;border-left:3px solid rgba(255,255,255,0.15);">
+                    <p style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;font-style:italic;">
+                        "<span class="en">Before you do anything in corporate, think first about how you'll present it.</span><span class="pl">W korpo zanim cokolwiek zrobisz, zastanów się najpierw jak to pokażesz.</span>"
                     </p>
                 </div>
-
-                <div class="card card-quote hover:border-white/30">
-                    <div class="text-3xl font-serif text-white/10 mb-2">"</div>
-                    <p class="text-white/80 leading-relaxed">
-                        <span class="en">Incentives drive behaviours.</span>
-                        <span class="pl">Incentives napędzają zachowania.</span>
+                <div style="background:var(--navy);padding:32px;border-left:3px solid rgba(255,255,255,0.15);">
+                    <p style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;font-style:italic;">
+                        "<span class="en">Incentives drive behaviours.</span><span class="pl">Incentives napędzają zachowania.</span>"
                     </p>
                 </div>
-
-                <div class="card card-quote hover:border-white/30">
-                    <div class="text-3xl font-serif text-white/10 mb-2">"</div>
-                    <p class="text-white/80 leading-relaxed">
-                        <span class="en">Nobody will give you as much as sales will promise you.</span>
-                        <span class="pl">Nikt ci tyle nie da ile sprzedaż ci obieca.</span>
+                <div style="background:var(--navy);padding:32px;border-left:3px solid rgba(255,255,255,0.15);">
+                    <p style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;font-style:italic;">
+                        "<span class="en">Nobody will give you as much as sales will promise you.</span><span class="pl">Nikt ci tyle nie da ile sprzedaż ci obieca.</span>"
                     </p>
                 </div>
-
-                <div class="card card-quote hover:border-white/30">
-                    <div class="text-3xl font-serif text-white/10 mb-2">"</div>
-                    <p class="text-white/80 leading-relaxed">
-                        <span class="en">Let those who are paid accordingly make the decisions.</span>
-                        <span class="pl">Daj podejmować decyzje tym, którzy mają za to płacone odpowiednio.</span>
+                <div style="background:var(--navy);padding:32px;border-left:3px solid rgba(255,255,255,0.15);">
+                    <p style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;font-style:italic;">
+                        "<span class="en">Never fight corporate inertia — and never stand in the direction it's moving.</span><span class="pl">Nigdy nie siłuj się z bezwładnością korporacji i nie stawaj na kierunku w którym się porusza.</span>"
                     </p>
                 </div>
-
-                <div class="card card-quote hover:border-white/30">
-                    <div class="text-3xl font-serif text-white/10 mb-2">"</div>
-                    <p class="text-white/80 leading-relaxed">
-                        <span class="en">Never fight corporate inertia — and never stand in the direction it's moving.</span>
-                        <span class="pl">Nigdy nie siłuj się z bezwładnością korporacji i nie stawaj na kierunku w którym się porusza.</span>
+                <div style="background:var(--navy);padding:32px;border-left:3px solid rgba(255,255,255,0.15);">
+                    <p style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;font-style:italic;">
+                        "<span class="en">Let those who are paid accordingly make the decisions.</span><span class="pl">Daj podejmować decyzje tym, którzy mają za to płacone odpowiednio.</span>"
                     </p>
                 </div>
-
-                <div class="card card-quote hover:border-white/30">
-                    <div class="text-3xl font-serif text-white/10 mb-2">"</div>
-                    <p class="text-white/80 leading-relaxed">
-                        <span class="en">The higher up the iceberg of ignorance, the less appetite for changing how you work — and the more energy goes into designing processes around your own comfort, often at the expense of results.</span>
-                        <span class="pl">Im wyżej na "iceberg of ignorance" tym mniejszy apetyt na zmianę własnego sposobu pracy i większa chęć ustawienia procesów pod własną wygodę — nawet kosztem wyników.</span>
+                <div style="background:var(--navy);padding:32px;border-left:3px solid rgba(255,255,255,0.15);">
+                    <p style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;font-style:italic;">
+                        "<span class="en">The higher up the iceberg of ignorance, the less appetite for changing how you work.</span><span class="pl">Im wyżej na "iceberg of ignorance" tym mniejszy apetyt na zmianę własnego sposobu pracy.</span>"
                     </p>
                 </div>
-
             </div>
-
-            <p class="text-center text-white/30 text-xs tracking-widest uppercase mt-12">
+            <p style="text-align:center;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:40px;">
                 <span class="en">This is the system. We can change it.</span>
                 <span class="pl">To jest system. Możemy go zmienić.</span>
             </p>
@@ -825,68 +935,58 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-32 px-8 bg-rich-black">
-        <div class="max-w-4xl mx-auto">
-            <div class="section-label text-center">
-                <span class="en">Contact</span><span class="pl">Kontakt</span>
-            </div>
-            <h2 class="font-serif text-4xl font-bold text-center mb-6">
-                <span class="en">Let's talk about your organisation</span>
-                <span class="pl">Porozmawiajmy o Twojej organizacji</span>
-            </h2>
-            <p class="text-white/50 text-center max-w-xl mx-auto mb-16 leading-relaxed text-sm">
-                <span class="en">Tell me where the friction is. I'll tell you honestly if I can help — and what that would look like.</span>
-                <span class="pl">Powiedz mi gdzie są tarcia. Powiem Ci szczerze czy mogę pomóc — i jak by to wyglądało.</span>
-            </p>
-
-            <div class="grid lg:grid-cols-2 gap-16">
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center shrink-0">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
+    <section id="contact" style="padding:96px 40px;background:var(--white);">
+        <div style="max-width:1200px;margin:0 auto;">
+            <span class="eyebrow"><span class="en">Contact</span><span class="pl">Kontakt</span></span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+                <div>
+                    <h2 class="font-serif fade-in" style="font-size:42px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:24px;">
+                        <span class="en">Let's talk about your organisation</span>
+                        <span class="pl">Porozmawiajmy o Twojej organizacji</span>
+                    </h2>
+                    <p style="font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:48px;">
+                        <span class="en">Tell me where the friction is. I'll tell you honestly if I can help — and what that would look like.</span>
+                        <span class="pl">Powiedz mi gdzie są tarcia. Powiem Ci szczerze czy mogę pomóc — i jak by to wyglądało.</span>
+                    </p>
+                    <div style="display:flex;flex-direction:column;gap:24px;">
+                        <div style="display:flex;align-items:center;gap:16px;">
+                            <div style="width:40px;height:40px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:4px;">Email</div>
+                                <a href="mailto:mikolajbanas@gmail.com" style="font-size:14px;color:var(--navy);text-decoration:none;">mikolajbanas@gmail.com</a>
+                            </div>
                         </div>
-                        <div>
-                            <div class="text-xs text-white/30 tracking-widest uppercase mb-1">Email</div>
-                            <a href="mailto:mikolajbanas@gmail.com" class="text-white/80 hover:text-white transition-colors text-sm">mikolajbanas@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center shrink-0">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="text-xs text-white/30 tracking-widest uppercase mb-1">LinkedIn</div>
-                            <a href="https://linkedin.com/in/mikolajbanas" target="_blank" class="text-white/80 hover:text-white transition-colors text-sm">linkedin.com/in/mikolajbanas</a>
+                        <div style="display:flex;align-items:center;gap:16px;">
+                            <div style="width:40px;height:40px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:4px;">LinkedIn</div>
+                                <a href="https://linkedin.com/in/mikolajbanas" target="_blank" style="font-size:14px;color:var(--navy);text-decoration:none;">linkedin.com/in/mikolajbanas</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <form class="space-y-6" onsubmit="handleSubmit(event)">
+                <form onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:20px;">
                     <div>
-                        <label class="block text-xs text-white/40 tracking-widest uppercase mb-2">
-                            <span class="en">Name</span><span class="pl">Imię i nazwisko</span>
-                        </label>
-                        <input type="text" required class="w-full bg-black border border-white/15 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-white/50 transition-colors placeholder:text-white/20"
-                            placeholder="Jan Kowalski">
+                        <label class="form-label"><span class="en">Name</span><span class="pl">Imię i nazwisko</span></label>
+                        <input type="text" required class="form-input" placeholder="Jan Kowalski">
                     </div>
                     <div>
-                        <label class="block text-xs text-white/40 tracking-widest uppercase mb-2">Email</label>
-                        <input type="email" required class="w-full bg-black border border-white/15 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-white/50 transition-colors placeholder:text-white/20"
-                            placeholder="jan@firma.pl">
+                        <label class="form-label">Email</label>
+                        <input type="email" required class="form-input" placeholder="jan@firma.pl">
                     </div>
                     <div>
-                        <label class="block text-xs text-white/40 tracking-widest uppercase mb-2">
-                            <span class="en">What's the challenge?</span><span class="pl">Jaki masz problem?</span>
-                        </label>
-                        <textarea rows="4" class="w-full bg-black border border-white/15 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-white/50 transition-colors placeholder:text-white/20 resize-none"
-                            placeholder="..."></textarea>
+                        <label class="form-label"><span class="en">What's the challenge?</span><span class="pl">Jaki masz problem?</span></label>
+                        <textarea rows="5" class="form-input" style="resize:none;" placeholder="..."></textarea>
                     </div>
-                    <button type="submit" class="btn-primary w-full" id="submit-btn">
+                    <button type="submit" class="btn-primary" id="submit-btn" style="width:100%;">
                         <span class="en">Send Message</span><span class="pl">Wyślij wiadomość</span>
                     </button>
                 </form>
@@ -895,17 +995,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-white/8">
-        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="font-serif text-xl animate-shimmer">MB</div>
-            <p class="text-white/30 text-xs tracking-wide text-center">
-                © 2026 <span class="en">Miko J. Banas</span><span class="pl">Mikołaj Jerzy Banaś</span>.
-                <span class="en">Flow efficiency for white collar organisations.</span>
-                <span class="pl">Flow efficiency dla organizacji white collar.</span>
+    <footer style="background:var(--navy);padding:48px 40px;">
+        <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+            <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#fff;letter-spacing:0.5px;">
+                Miko J. Banas <span style="font-weight:300;opacity:0.5;">— Flow Efficiency</span>
+            </div>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);">
+                © 2026 <span class="en">Miko J. Banas. Flow efficiency for white collar organisations.</span>
+                <span class="pl">Mikołaj Jerzy Banaś. Flow efficiency dla organizacji white collar.</span>
             </p>
-            <div class="flex gap-6">
-                <a href="mailto:mikolajbanas@gmail.com" class="text-white/30 hover:text-white/70 transition-colors text-xs tracking-widest uppercase">Email</a>
-                <a href="https://linkedin.com/in/mikolajbanas" target="_blank" class="text-white/30 hover:text-white/70 transition-colors text-xs tracking-widest uppercase">LinkedIn</a>
+            <div style="display:flex;gap:24px;">
+                <a href="mailto:mikolajbanas@gmail.com" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;">Email</a>
+                <a href="https://linkedin.com/in/mikolajbanas" target="_blank" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;">LinkedIn</a>
             </div>
         </div>
     </footer>
@@ -931,7 +1032,7 @@
             btn.textContent = '...';
             btn.disabled = true;
             setTimeout(() => {
-                btn.textContent = '✓';
+                btn.textContent = '✓ Sent';
                 setTimeout(() => {
                     btn.innerHTML = '<span class="en">Send Message</span><span class="pl">Wyślij wiadomość</span>';
                     btn.disabled = false;
@@ -942,22 +1043,13 @@
             }, 1200);
         }
 
-        // Scroll fade-in for cards
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(24px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
